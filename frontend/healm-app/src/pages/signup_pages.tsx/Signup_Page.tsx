@@ -108,7 +108,9 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
               styles.login_with_app_button,
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
-            onPressOut={() => navigate()}
+            onPressOut={() => {
+                // SIGN UP WITH APPLE 
+            }}
           >
             <Ionicons
               style={styles.text_input_icons}
@@ -123,7 +125,9 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
               styles.login_with_app_button,
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
-            onPressOut={() => navigate()}
+            onPressOut={() => {
+                // SIGN UP WITH GOOGLE
+            }}
           >
             <Ionicons
               style={styles.text_input_icons}
@@ -143,7 +147,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
           <View
             style={{
               alignItems: "center",
-              marginTop: "auto",
+             marginTop: "auto",
               bottom: 10,
             }}
           >
