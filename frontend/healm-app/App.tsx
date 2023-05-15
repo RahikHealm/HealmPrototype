@@ -6,6 +6,7 @@ Yarn/NPM Imports:
 yarn add @react-navigation/native
 yarn add @react-navigation/native-stack
 yarn add react-native-screens react-native-safe-area-context
+yarn add @react-navigation/bottom-tabs
 */
 
 // Page Imports
@@ -14,8 +15,8 @@ import DesignPage from './src/styles/DesignPage';
 
 export default function App() {
   return (
-    // <Navigator/>
-    <DesignPage/>
+    <Navigator/>
+    // <DesignPage/>
   );
 }
 
