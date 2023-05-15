@@ -8,6 +8,7 @@ import Onboarding_Page_2 from "./pages/onboarding_pages/Onboarding_Page_2";
 import Onboarding_Page_3 from "./pages/onboarding_pages/Onboarding_Page_3";
 import SignupPage from "./pages/signup_pages.tsx/Signup_Page";
 import LoginPage from "./pages/login_pages.tsx/Login_Page";
+import MainContainer from "./pages/MainContainer";
 
 
 const Stack = createNativeStackNavigator();
@@ -45,6 +46,8 @@ const Navigator = () => {
         <Stack.Screen name="Onboarding_3" component={Onboarding_Page_3}/>
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
+        <Stack.Screen name="MainContainer" component={MainContainer}/>
+
     </Stack.Navigator>
   </NavigationContainer>
   )
