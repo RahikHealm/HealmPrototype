@@ -23,6 +23,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [fullName, setFullName] = React.useState("");
   const [password, setPassword] = React.useState("");
+
   function navigate() {
     if (email !== "" && fullName !== "") {
       let user: UserData[string] = {
@@ -86,7 +87,13 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
             />
           </View>
 
-          <Pressable style={styles.login_button} onPressOut={() => navigate()}>
+          <Pressable
+            style={({ pressed }) => [
+              styles.login_button,
+              pressed && { backgroundColor: "#FFB75F" },
+            ]}
+            onPressOut={() => navigate()}
+          >
             <Text style={styles.login_button_text}>Sign Up</Text>
           </Pressable>
 
@@ -97,7 +104,10 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
           </View>
 
           <Pressable
-            style={styles.login_with_app_button}
+            style={({ pressed }) => [
+              styles.login_with_app_button,
+              pressed && { backgroundColor: "#D2D2D2" },
+            ]}
             onPressOut={() => navigate()}
           >
             <Ionicons
@@ -109,7 +119,10 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
           </Pressable>
 
           <Pressable
-            style={styles.login_with_app_button}
+            style={({ pressed }) => [
+              styles.login_with_app_button,
+              pressed && { backgroundColor: "#D2D2D2" },
+            ]}
             onPressOut={() => navigate()}
           >
             <Ionicons
@@ -130,7 +143,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
           <View
             style={{
               alignItems: "center",
-              // position: "absolute", Not sure why this is here. Bad idea bc it moves up with keyboard.
+              marginTop: "auto",
               bottom: 10,
             }}
           >

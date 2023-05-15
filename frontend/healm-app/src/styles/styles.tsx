@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     body_text: {
         paddingTop: 20,
         paddingHorizontal: 25,
-        fontSize: 20,
+        fontSize: 18,
         textAlign: "center",
         fontWeight: "normal",
     },

@@ -45,7 +45,6 @@ const Navigator = () => {
         <Stack.Screen name="Onboarding_3" component={Onboarding_Page_3}/>
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
-
     </Stack.Navigator>
   </NavigationContainer>
   )
