@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import {
   Pressable,
   SafeAreaView,
@@ -6,36 +6,57 @@ import {
   TextInput,
   View,
   ScrollView,
+  Alert,
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
 import { StackActions } from "@react-navigation/native";
-import { checkUsername_password } from "../../api/TempUser";
 import { Ionicons } from "@expo/vector-icons";
+import registerUser from "../../api/userRegistration_api";
 
-interface LoginPage {
+interface SignupPage {
   navigation: any;
 }
 
-const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
-  const [userName, setUserName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [password, setPassword] = useState("");
-  function navigate() {
-    if (userName !== "" && password !== "") {
-      if (checkUsername_password(userName, password) !== -1) {
-        navigation.navigate("MainContainer");
-      } else console.log("Invalid Username or Password");
-    } else console.log("Username or Password incomplete");
+const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
+  const [email, setEmail] = React.useState("");
+  const [fullName, setFullName] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  async function navigate() {
+    if (email !== "" && fullName !== "") {
+      registerUser(email, fullName, password)
+        .then(() => {
+          navigation.navigate("Login");
+        })
+        .catch((error: Error) => {
+          Alert.alert("Error", error.message);
+        });
+    } else {
+      Alert.alert("Error", "Complete all fields");
+    }
   }
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <Text style={styles.page_header_text}>Hi! Welcome back</Text>
+          <Text style={styles.page_header_text}>Sign Up</Text>
           <Text style={styles.page_subheader_text}>
-            Sign In to your account
+            Please fill out the form below!
           </Text>
+          <View style={styles.text_input_box}>
+            <Ionicons
+              style={styles.text_input_icons}
+              size={30}
+              name="person-outline"
+            ></Ionicons>
+            <TextInput
+              style={styles.text_input_text}
+              returnKeyType="done"
+              onChangeText={(userInputValue) => setFullName(userInputValue)}
+              placeholder={"Your Name"}
+            />
+          </View>
           <View style={styles.text_input_box}>
             <Ionicons
               style={styles.text_input_icons}
@@ -46,8 +67,8 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               style={styles.text_input_text}
               keyboardType="email-address"
               returnKeyType="done"
-              onChangeText={(userInputValue) => setUserName(userInputValue)}
-              placeholder={"Type your email"}
+              onChangeText={(userInputValue) => setEmail(userInputValue)}
+              placeholder={"Email Address"}
             />
           </View>
           <View style={styles.text_input_box}>
@@ -59,31 +80,11 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
             <TextInput
               style={styles.text_input_text}
               secureTextEntry={true}
-              returnKeyType="done"
-              placeholder={"Type your password"}
+              placeholder={"Password"}
               onChangeText={(userInputValue) => setPassword(userInputValue)}
             />
           </View>
-          <Pressable
-            style={{
-              alignSelf: "flex-end",
-              marginTop: 5,
-              marginRight: 5,
-              flexDirection: "row",
-            }}
-            onPress={() => navigation.dispatch(StackActions.replace("Login"))}
-          >
-            <Text
-              style={{
-                color: "#F6AF71",
-                fontWeight: "500",
-                fontSize: 16,
-                marginTop: 5,
-              }}
-            >
-              Forgot password?
-            </Text>
-          </Pressable>
+
           <Pressable
             style={({ pressed }) => [
               styles.login_button,
@@ -91,12 +92,12 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
             ]}
             onPressOut={() => navigate()}
           >
-            <Text style={styles.login_button_text}>Sign In</Text>
+            <Text style={styles.login_button_text}>Sign Up</Text>
           </Pressable>
 
           <View style={styles.divider}>
             <View style={styles.line}></View>
-            <Text style={styles.dividerText}>Or sign in with</Text>
+            <Text style={styles.dividerText}>Or sign up with</Text>
             <View style={styles.line}></View>
           </View>
 
@@ -106,7 +107,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN IN WITH APPLE
+              // SIGN UP WITH APPLE
             }}
           >
             <Ionicons
@@ -114,7 +115,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               size={30}
               name="logo-apple"
             ></Ionicons>
-            <Text style={styles.login_button_text}>Sign In with Apple</Text>
+            <Text style={styles.login_button_text}>Sign Up with Apple</Text>
           </Pressable>
 
           <Pressable
@@ -123,7 +124,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN IN WITH GOOGLE
+              // SIGN UP WITH GOOGLE
             }}
           >
             <Ionicons
@@ -131,20 +132,20 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               size={30}
               name="logo-google"
             ></Ionicons>
-            <Text style={styles.login_button_text}>Sign In with Google</Text>
+            <Text style={styles.login_button_text}>Sign Up with Google</Text>
           </Pressable>
 
           <Pressable
             style={styles.new_user_signup_button}
-            onPressOut={() => navigation.navigate("Signup")}
+            onPress={() => navigation.navigate("Login")}
           >
-            <Text style={styles.subheader_text}>Don’t have an account? </Text>
-            <Text style={styles.new_user_signup_button_text}>Sign Up</Text>
+            <Text style={styles.subheader_text}>Already Have an Account? </Text>
+            <Text style={styles.new_user_signup_button_text}>Sign in</Text>
           </Pressable>
           <View
             style={{
               alignItems: "center",
-              marginTop: 15,
+              marginTop: "auto",
               bottom: 10,
             }}
           >
@@ -172,4 +173,4 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;
