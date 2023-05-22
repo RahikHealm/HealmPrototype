@@ -6,12 +6,14 @@ import {
   TextInput,
   View,
   ScrollView,
+  Alert
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
 import { StackActions } from "@react-navigation/native";
 import { checkUsername_password } from "../../api/TempUser";
 import { Ionicons } from "@expo/vector-icons";
+import authenticateUser from "../../api/userAuth_api";
 
 interface LoginPage {
   navigation: any;
@@ -21,13 +23,20 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
   const [userName, setUserName] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
-  function navigate() {
+
+  const navigate = () => {
     if (userName !== "" && password !== "") {
-      if (checkUsername_password(userName, password) !== -1) {
-        navigation.navigate("MainContainer");
-      } else console.log("Invalid Username or Password");
-    } else console.log("Username or Password incomplete");
-  }
+      authenticateUser(userName, password)
+        .then(() => {
+          navigation.navigate("MainContainer");
+        })
+        .catch((error: Error) => {
+          Alert.alert("Error", error.message);
+        });
+    } else {
+      Alert.alert("Error", "Username or Password incomplete");
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>

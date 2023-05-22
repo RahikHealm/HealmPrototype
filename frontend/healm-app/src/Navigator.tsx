@@ -6,8 +6,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Onboarding_Page_1 from "./pages/onboarding_pages/Onboarding_Page_1";
 import Onboarding_Page_2 from "./pages/onboarding_pages/Onboarding_Page_2";
 import Onboarding_Page_3 from "./pages/onboarding_pages/Onboarding_Page_3";
-import SignupPage from "./pages/signup_pages.tsx/Signup_Page";
-import LoginPage from "./pages/login_pages.tsx/Login_Page";
+import SignupPage from "./pages/signup_pages/Signup_Page";
+import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
 
 
@@ -39,7 +39,7 @@ const Navigator = () => {
         // },
         headerShown: false,
       }}
-      initialRouteName="MainContainer" // Temporary Change
+      initialRouteName="Login" // Temporary Change
     >
         <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
         <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
