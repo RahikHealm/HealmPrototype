@@ -39,7 +39,7 @@ const Navigator = () => {
         // },
         headerShown: false,
       }}
-      initialRouteName="Onboarding_1"
+      initialRouteName="MainContainer" // Temporary Change
     >
         <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
         <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
