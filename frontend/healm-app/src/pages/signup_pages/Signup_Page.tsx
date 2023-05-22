@@ -6,14 +6,13 @@ import {
   TextInput,
   View,
   ScrollView,
+  Alert,
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
 import { StackActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-
-import { getNumUsers, addToUserData } from "../../api/TempUser";
-import { UserData } from "../../constants/UserData";
+import registerUser from "../../api/userRegistration_api";
 
 interface SignupPage {
   navigation: any;
@@ -24,18 +23,17 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
   const [fullName, setFullName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  function navigate() {
+  async function navigate() {
     if (email !== "" && fullName !== "") {
-      let user: UserData[string] = {
-        userId: getNumUsers(),
-        fullName: fullName,
-        email: email,
-        password: password,
-        patient: {},
-      };
-      addToUserData(user);
-      navigation.navigate("Login");
+      registerUser(email, fullName, password)
+        .then(() => {
+          navigation.navigate("Login");
+        })
+        .catch((error: Error) => {
+          Alert.alert("Error", error.message);
+        });
     } else {
+      Alert.alert("Error", "Complete all fields");
     }
   }
   return (
@@ -109,7 +107,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN UP WITH APPLE 
+              // SIGN UP WITH APPLE
             }}
           >
             <Ionicons
@@ -126,7 +124,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN UP WITH GOOGLE
+              // SIGN UP WITH GOOGLE
             }}
           >
             <Ionicons
@@ -147,7 +145,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
           <View
             style={{
               alignItems: "center",
-             marginTop: "auto",
+              marginTop: "auto",
               bottom: 10,
             }}
           >

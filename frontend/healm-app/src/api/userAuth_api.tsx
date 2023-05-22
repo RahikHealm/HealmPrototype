@@ -4,7 +4,7 @@ async function authenticateUser(
 ): Promise<boolean> {
   try {
     // replace with actual API call
-    // const response = await fetch('https://example.com/api/login', {
+    // const response = await fetch('https://example.com/api/authenticateUser', {
     //   method: 'POST',
     //   body: JSON.stringify({ username, password }),
     //   headers: { 'Content-Type': 'application/json' },
@@ -18,9 +18,8 @@ async function authenticateUser(
       } else if (response.message === "Invalid Username or Password") {
         throw new Error("Invalid username or password");
       }
-    } else {
-      throw new Error("An error occurred during authentication");
     }
+    throw new Error("An error occurred during authentication");
   } catch (error) {
     throw error;
   }
