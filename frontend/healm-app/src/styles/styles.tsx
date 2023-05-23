@@ -149,16 +149,15 @@ export const styles = StyleSheet.create({
     marginVertical: 0,
   },
   calendar_wrapper: {
-    height: 400,
+    height: 550,
     position: "absolute",
     bottom: 0,
   },
-  calendar_header: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "flex-start",
-    marginTop: 10,
-    marginBottom: 10,
+  loading_container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+
 
 });
