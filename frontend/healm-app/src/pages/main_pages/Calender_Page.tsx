@@ -119,13 +119,16 @@ const CalendarPage: React.FC<CalendarPage> = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.header_text}>{"Calendar Page"}</Text>
-        <Text style={styles.subheader_text}>
-          {"Current Date: "} {curDateString}
-        </Text>
+    <View style={styles.page_container}>
+      <View style={styles.header_row}>
+        <Text style={styles.header2_text}>{"Calendar Page"}</Text>
+        <View/>
       </View>
+      <View style={styles.header_row}>
+        <Text style={styles.subheader_text}>{"Bulleted list of markers"}</Text>
+        <View/>
+      </View>
+
       {!isCalendarReady ? (
         <View style={styles.loading_container}>
           <ActivityIndicator size={50} color="#F6AF71"/>

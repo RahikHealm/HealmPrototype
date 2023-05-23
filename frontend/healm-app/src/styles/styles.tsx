@@ -5,6 +5,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F3F0F7",
     alignItems: "center",
   },
+  page_container: {
+    flex: 1,
+    backgroundColor: "#F3F0F7",
+  },
+  header_row: {
+    // flexGrow: 1,
+    // backgroundColor: 'blue',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: 'flex-start',
+    marginBottom: 10,
+    marginLeft: 20,
+  },
   image: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height / 2,
@@ -13,6 +26,12 @@ export const styles = StyleSheet.create({
     paddingTop: 40,
     fontSize: 35,
     fontWeight: "400",
+  },
+  header2_text: {
+    paddingTop: 40,
+    fontSize: 40,
+    fontWeight: "600",
+    textAlign: 'left'
   },
   body_text: {
     paddingTop: 20,

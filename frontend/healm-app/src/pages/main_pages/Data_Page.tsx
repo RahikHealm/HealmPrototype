@@ -1,17 +1,16 @@
-import {Text, View, Image, Pressable} from 'react-native';
+import { Text, View, Image, Pressable } from "react-native";
 import React from "react";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
 
-interface DataPage {
-
-}
-
+interface DataPage {}
 
 const DataPage: React.FC<DataPage> = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header_text}>{"Data Page"}</Text>
+    <View style={styles.page_container}>
+      <View style={styles.header_row}>
+        <Text style={styles.header2_text}>{"Data Page"}</Text>
+      </View>
     </View>
   );
 };
