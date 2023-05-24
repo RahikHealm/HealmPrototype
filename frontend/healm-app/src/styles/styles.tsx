@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
   },
   page_container: {
     flex: 1,
+    flexDirection: "column",
     backgroundColor: "#F3F0F7",
   },
   header_row: {
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: 'flex-start',
-    marginBottom: 10,
+    marginBottom: 5,
     marginLeft: 20,
   },
   image: {
@@ -168,7 +169,8 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   calendar_wrapper: {
-    height: 550,
+    backgroundColor: "rgba(217, 217, 217, 0.21)",
+    height: 480,
     position: "absolute",
     bottom: 0,
   },

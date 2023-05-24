@@ -11,6 +11,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
 import { CalendarList } from "react-native-calendars";
+import BulletPoint from "../../components/bullet_point";
 
 const curDate: Date = new Date();
 
@@ -49,37 +50,38 @@ const CalendarPage: React.FC<CalendarPage> = () => {
     const textStyle: TextStyle = {
       fontSize: 24,
       fontWeight: "bold",
-      paddingTop: 10,
-      paddingBottom: 10,
+      paddingTop: 5,
+      paddingBottom: 5,
       color: "#F6AF71",
       paddingRight: 5,
     };
     const caldendarHeader: ViewStyle = {
       flexDirection: "row",
       width: "100%",
-      justifyContent: "flex-start",
-      marginTop: 10,
-      marginBottom: 10,
+      justifyContent: "center",
+      marginTop: 5,
+      marginBottom: 5,
     };
-  
+
     return (
       <View style={caldendarHeader}>
         <Text style={textStyle}>{`${month} ${year}`}</Text>
       </View>
     );
   };
-  
+
   // state can be 'selected', 'today', 'disabled'
   const renderCustomDay = (date: any, state: any): JSX.Element => {
     const textStyle: TextStyle = {
       textAlign: "center",
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: "300",
-      position: "absolute",
-      right: 5,
-      top: 15,
+      marginTop: 5,
+      // position: "absolute",
+      // right: 5,
+      // top: 15,
     };
-  
+
     const disabledDay: ViewStyle =
       state === "disabled"
         ? {
@@ -98,9 +100,9 @@ const CalendarPage: React.FC<CalendarPage> = () => {
             backgroundColor: "#FFD596",
           }
         : {};
-  
+
     const dateStyle: ViewStyle = {
-      height: 60,
+      height: 50,
       width: 40,
       borderWidth: 1,
       borderColor: "black",
@@ -110,7 +112,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
       ...selectedDay,
       ...todayDay,
     };
-  
+
     return (
       <View style={dateStyle}>
         <Text style={[textStyle]}>{date?.day}</Text>
@@ -122,21 +124,25 @@ const CalendarPage: React.FC<CalendarPage> = () => {
     <View style={styles.page_container}>
       <View style={styles.header_row}>
         <Text style={styles.header2_text}>{"Calendar Page"}</Text>
-        <View/>
       </View>
       <View style={styles.header_row}>
-        <Text style={styles.subheader_text}>{"Bulleted list of markers"}</Text>
-        <View/>
+        <BulletPoint color="#3B82F6">Visit</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#10B981">Prescription</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#F59E0B">Docter's Appointment</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#E11D48">Negative Trend</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#7C3AED">Customize</BulletPoint>
       </View>
 
-      {!isCalendarReady ? (
-        <View style={styles.loading_container}>
-          <ActivityIndicator size={50} color="#F6AF71"/>
-        </View>
-      ) : (
-        <View style={styles.calendar_wrapper}>
+      <View style={styles.calendar_wrapper}>
         <CalendarList
-        
           horizontal={true}
           pagingEnabled={true}
           firstDay={1}
@@ -147,19 +153,13 @@ const CalendarPage: React.FC<CalendarPage> = () => {
           theme={calendarTheme}
         />
       </View>
-      )}
-      
     </View>
   );
 };
 
-
-
 const calendarTheme = {
-  backgroundColor: "#F3F0F7",
-  calendarBackground: "#F3F0F7",
-  todayTextColor: "#F6AF71",
-  textDayFontSize: 20,
+  // backgroundColor: "#D9D9D9",
+  calendarBackground: "rgba(0, 0, 0, 0.0)",
 };
 
 export default CalendarPage;

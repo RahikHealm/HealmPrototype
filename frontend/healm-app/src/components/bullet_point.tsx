@@ -5,12 +5,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
   },
   dot: {
-    color: "black",
-    fontSize: 32,
-    marginRight: 10
+    backgroundColor: "black",
+    marginRight: 10,
+    height: 6,
+    width: 6,
+    borderRadius: 50,
   },
   bullet_text: {
     fontSize: 16,
@@ -28,14 +29,16 @@ const BulletPoint: React.FC<BulletPointProps> = ({
   color,
   fontSize,
 }) => {
-  console.log("font is" + fontSize);
   return (
     <View style={styles.container}>
-      <Text
-        style={[styles.dot, color ? { color: color} :{}, fontSize ? {fontSize: fontSize * 2 } : {}]}
-      >
-        •
-      </Text>
+      <View
+        style={[
+          styles.dot,
+          color ? { backgroundColor: color } : {},
+          fontSize ? {height: fontSize * .375, width: fontSize * .375} : {}
+          ,
+        ]}
+      />
       <Text style={(styles.bullet_text, { fontSize: fontSize })}>
         {children}
       </Text>
