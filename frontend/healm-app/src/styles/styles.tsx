@@ -165,7 +165,7 @@ export const styles = StyleSheet.create({
     color: "#808D9E",
   },
   elementContainer: {
-    marginVertical: 0,
+    marginVertical: 10,
   },
   calendar_wrapper: {
     height: 550,

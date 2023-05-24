@@ -16,8 +16,8 @@ import DesignPage from './src/styles/DesignPage';
 
 export default function App() {
   return (
-    <Navigator/>
-    // <DesignPage/>
+    // <Navigator/>
+    <DesignPage/>
   );
 }
 

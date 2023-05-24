@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TextInput, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles"; // Assuming styles are imported from another file
+import BulletPoint from "../components/bullet_point";
 
 const DesignPage: React.FC = () => {
   return (
@@ -89,6 +90,26 @@ const DesignPage: React.FC = () => {
             </Text>
           </Pressable>
         </View>
+
+        <View style={styles.elementContainer}>
+          <BulletPoint>
+           Default Bullet Point
+          </BulletPoint>
+        </View>
+
+        <View style={styles.elementContainer}>
+          <BulletPoint color="red">
+           Colored Bullet Point
+          </BulletPoint>
+        </View>
+
+        
+        <View style={styles.elementContainer}>
+          <BulletPoint color="blue" fontSize={20}>
+           Larger Font Bullet Point
+          </BulletPoint>
+        </View>
+
       </View>
     </ScrollView>
   );
