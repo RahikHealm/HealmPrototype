@@ -4,10 +4,30 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles"; // Assuming styles are imported from another file
 import BulletPoint from "../components/bullet_point";
+import SearchBar from "../components/search_bar";
+import { CategoryChild, CategoryGroup } from "../components/category_selectors";
 
 const DesignPage: React.FC = () => {
+  const [temp, setTemp] = React.useState("");
+
+  const categoryChildren: CategoryChild[] = [
+    {text: "Medicine", bgColor: "#EBF8E6", iconColor: "#31b788", icon: "medkit", borderColor: "#FEED94"},
+    {text: "Heart", bgColor: "#FFE8ED", iconColor: "#EB4B62", icon: "heart", borderColor: "#FEED94"},
+    {text: "Medicine", bgColor: "#EBF8E6", iconColor: "#31b788", icon: "medkit", borderColor: "#FEED94"},
+    
+  ]
+
+
   return (
     <ScrollView>
+      <View style={styles.elementContainer}>
+        <View style={styles.divider}>
+          <View style={styles.line} />
+          <Text style={styles.dividerText}>CONTAINER</Text>
+          <View style={styles.line} />
+        </View>
+      </View>
+      {/* /////////////////////////////////////////////////////////////////////////// */}
       <View style={styles.container}>
         <View style={styles.elementContainer}>
           <Text style={styles.header_text}>Header Text</Text>
@@ -92,23 +112,50 @@ const DesignPage: React.FC = () => {
         </View>
 
         <View style={styles.elementContainer}>
-          <BulletPoint>
-           Default Bullet Point
-          </BulletPoint>
+          <BulletPoint>Default Bullet Point</BulletPoint>
         </View>
 
         <View style={styles.elementContainer}>
-          <BulletPoint color="red">
-           Colored Bullet Point
-          </BulletPoint>
+          <BulletPoint color="red">Colored Bullet Point</BulletPoint>
         </View>
 
-        
         <View style={styles.elementContainer}>
           <BulletPoint color="blue" fontSize={20}>
-           Larger Font Bullet Point
+            Larger Font Bullet Point
           </BulletPoint>
         </View>
+      </View>
+      {/* /////////////////////////////////////////////////////////////////////////// */}
+      <View style={styles.elementContainer}>
+        <View style={styles.divider}>
+          <View style={styles.line} />
+          <Text style={styles.dividerText}>PAGE CONTAINER</Text>
+          <View style={styles.line} />
+        </View>
+      </View>
+      {/* /////////////////////////////////////////////////////////////////////////// */}
+      <View style={styles.page_container}>
+        <View style={styles.elementContainer}>
+          <View style={styles.header_row}>
+            <Text style={styles.page_header}>Page Header Text</Text>
+          </View>
+        </View>
+
+        <View style={styles.elementContainer}>
+          <View style={styles.header_row}>
+            <Text style={styles.category_text}>Category Text</Text>
+          </View>
+        </View>
+
+        <View style={styles.elementContainer}>
+          <SearchBar setSearch={setTemp} search={temp} />
+        </View>
+
+        <View style={styles.elementContainer}>
+          <CategoryGroup borderColor="red" children={categoryChildren}/>
+        </View>
+
+
 
       </View>
     </ScrollView>

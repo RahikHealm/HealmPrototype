@@ -28,10 +28,15 @@ export const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "400",
   },
-  header2_text: {
+  page_header: {
     paddingTop: 40,
     fontSize: 40,
     fontWeight: "600",
+    textAlign: 'left'
+  },
+  category_text: {
+    fontSize: 24,
+    fontWeight: "700",
     textAlign: 'left'
   },
   body_text: {

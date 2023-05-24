@@ -1,23 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  dot: {
-    backgroundColor: "black",
-    marginRight: 10,
-    height: 6,
-    width: 6,
-    borderRadius: 50,
-  },
-  bullet_text: {
-    fontSize: 16,
-  },
-});
-
 interface BulletPointProps {
   color?: string;
   fontSize?: number;
@@ -45,5 +28,22 @@ const BulletPoint: React.FC<BulletPointProps> = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  dot: {
+    backgroundColor: "black",
+    marginRight: 10,
+    height: 6,
+    width: 6,
+    borderRadius: 50,
+  },
+  bullet_text: {
+    fontSize: 16,
+  },
+});
 
 export default BulletPoint;

@@ -105,7 +105,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
       height: 50,
       width: 40,
       borderWidth: 1,
-      borderColor: "black",
+      borderColor: "#ADADAD",
       borderRadius: 10,
       backgroundColor: "#FFF4E8",
       ...disabledDay,
@@ -123,7 +123,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
   return (
     <View style={styles.page_container}>
       <View style={styles.header_row}>
-        <Text style={styles.header2_text}>{"Calendar Page"}</Text>
+        <Text style={styles.page_header}>{"Calendar Page"}</Text>
       </View>
       <View style={styles.header_row}>
         <BulletPoint color="#3B82F6">Visit</BulletPoint>

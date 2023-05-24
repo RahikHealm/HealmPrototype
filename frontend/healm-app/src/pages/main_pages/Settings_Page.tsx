@@ -11,7 +11,7 @@ const SettingsPage: React.FC<SettingsPage> = () => {
   return (
     <View style={styles.page_container}>
       <View style={styles.header_row}>
-        <Text style={styles.header2_text}>{"Profile"}</Text>
+        <Text style={styles.page_header}>{"Profile"}</Text>
       </View>
     </View>
   );

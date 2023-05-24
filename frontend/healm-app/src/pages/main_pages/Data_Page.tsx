@@ -12,7 +12,7 @@ const DataPage: React.FC<DataPage> = () => {
   return (
     <View style={styles.page_container}>
       <View style={styles.header_row}>
-        <Text style={styles.header2_text}>{"All Data"}</Text>
+        <Text style={styles.page_header}>{"All Data"}</Text>
       </View>
       <View>
         <SearchBar setSearch={setSearch} search={search}/>

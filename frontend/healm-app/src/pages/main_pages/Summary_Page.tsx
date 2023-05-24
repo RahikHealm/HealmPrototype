@@ -11,7 +11,7 @@ const SummaryPage: React.FC<SummaryPage> = () => {
     return (
         <View style={styles.page_container}>
       <View style={styles.header_row}>
-        <Text style={styles.header2_text}>{"Dashboard"}</Text>
+        <Text style={styles.page_header}>{"Dashboard"}</Text>
       </View>
     </View>
     );
