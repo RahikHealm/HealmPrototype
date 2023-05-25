@@ -14,7 +14,7 @@ const DesignPage: React.FC = () => {
     {text: "Medicine", bgColor: "#EBF8E6", iconColor: "#31b788", icon: "medkit", borderColor: "#FEED94"},
     {text: "Heart", bgColor: "#FFE8ED", iconColor: "#EB4B62", icon: "heart", borderColor: "#FEED94"},
     {text: "Medicine", bgColor: "#EBF8E6", iconColor: "#31b788", icon: "medkit", borderColor: "#FEED94"},
-    
+
   ]
 
 
@@ -152,7 +152,7 @@ const DesignPage: React.FC = () => {
         </View>
 
         <View style={styles.elementContainer}>
-          <CategoryGroup borderColor="red" children={categoryChildren}/>
+          <CategoryGroup children={categoryChildren}/>
         </View>
 
 

@@ -4,7 +4,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, TextInput, View, Text, ViewStyle } from "react-native";
 
 interface CategoryGroup {
-  borderColor: string;
   children: CategoryChild | CategoryChild[];
 }
 
@@ -18,7 +17,7 @@ interface CategoryChild {
   isBottom?: boolean;
 }
 
-const CategoryGroup: React.FC<CategoryGroup> = ({ borderColor, children }) => {
+const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
   const childElements = Array.isArray(children) ? children : [children];
 
   return (
