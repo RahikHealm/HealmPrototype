@@ -23,12 +23,11 @@ const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
   return (
     <View style={styles.group_container}>
       {childElements.map((child, index) => {
-
-        if(index == 0){
-            return <CategoryChild key={index} isTop={true} {...child} />;
+        if (index == 0) {
+          return <CategoryChild key={index} isTop={true} {...child} />;
         }
-        if(index == childElements.length - 1){
-            return <CategoryChild key={index} isBottom={true} {...child} />;
+        if (index == childElements.length - 1) {
+          return <CategoryChild key={index} isBottom={true} {...child} />;
         }
 
         return <CategoryChild key={index} {...child} />;
@@ -44,35 +43,34 @@ const CategoryChild: React.FC<CategoryChild> = ({
   borderColor,
   text,
   isTop,
-  isBottom
+  isBottom,
 }) => {
+  let backgroundStyles: ViewStyle = {
+    backgroundColor: bgColor,
+    borderColor: borderColor,
+  };
+  if (isTop) {
+    backgroundStyles = {
+      backgroundColor: bgColor,
+      borderColor: borderColor,
 
-    let backgroundStyles: ViewStyle = {
-        backgroundColor: bgColor,
-        borderColor: borderColor,
-        borderBottomWidth: 0,
-        borderTopWidth: 0,
+      borderTopRightRadius: 25,
+      borderTopLeftRadius: 25,
+
+      borderTopWidth: 2,
     };
-    if(isTop){
-        backgroundStyles = {
-            backgroundColor: bgColor,
-            borderColor: borderColor,
+  }
+  if (isBottom) {
+    backgroundStyles = {
+      backgroundColor: bgColor,
+      borderColor: borderColor,
 
-            borderTopRightRadius: 25,
-            borderTopLeftRadius: 25,
-        }
-    }
-    if(isBottom){
-        backgroundStyles = {
-            backgroundColor: bgColor,
-            borderColor: borderColor,
+      borderBottomRightRadius: 25,
+      borderBottomLeftRadius: 25,
 
-            borderBottomRightRadius: 25,
-            borderBottomLeftRadius: 25,
-
-            borderBottomWidth: 2,
-        }
-    }
+      borderBottomWidth: 2,
+    };
+  }
 
   return (
     <View style={[styles.child_container, backgroundStyles]}>
@@ -100,7 +98,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   child_container: {
-    borderWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderBottomWidth: 2,
     flexDirection: "row",
     justifyContent: "space-between",
     flexGrow: 1,

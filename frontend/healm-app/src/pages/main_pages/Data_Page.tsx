@@ -44,7 +44,7 @@ const DataPage: React.FC<DataPage> = () => {
       bgColor: "##E8F4FF",
       iconColor: "#22538E",
       icon: "bed",
-      borderColor: "#FFFFFFF",
+      borderColor: "#FFFFFF",
     },
     {
       text: "Diet",
@@ -68,7 +68,7 @@ const DataPage: React.FC<DataPage> = () => {
       bgColor: "##E8F4FF",
       iconColor: "#22538E",
       icon: "bed",
-      borderColor: "#FFFFFFF",
+      borderColor: "#FFFFFF",
     },
   ];
 
