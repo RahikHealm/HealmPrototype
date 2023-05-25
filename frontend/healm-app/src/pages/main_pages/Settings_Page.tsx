@@ -9,8 +9,10 @@ interface SettingsPage {
 
 const SettingsPage: React.FC<SettingsPage> = () => {
   return (
-    <View style={styles.container}>
-        <Text style={styles.header_text}>Settings Page</Text>
+    <View style={styles.page_container}>
+      <View style={styles.header_row}>
+        <Text style={styles.page_header}>{"Profile"}</Text>
+      </View>
     </View>
   );
 };

@@ -1,11 +1,17 @@
-import { Text, View, Image, Pressable, TextStyle } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  Pressable,
+  TextStyle,
+  ViewStyle,
+  ActivityIndicator,
+} from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
 import { CalendarList } from "react-native-calendars";
-
-
-
+import BulletPoint from "../../components/bullet_point";
 
 const curDate: Date = new Date();
 
@@ -29,31 +35,121 @@ const curDateString: string =
 interface CalendarPage {}
 
 const CalendarPage: React.FC<CalendarPage> = () => {
-  const [calendarKey, setCalendarKey] = React.useState(0);
+  const [isCalendarReady, setCalendarReady] = React.useState(false);
 
-  // This Calendar component won't update it's style unless you change the key???
   React.useEffect(() => {
-    setCalendarKey(Math.random());
+    // Simulate the loading time of the calendar component
+    setTimeout(() => {
+      setCalendarReady(true);
+    }, 1000); // Adjust the timeout duration as needed
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.header_text}>{"Calendar Page"}</Text>
-        <Text style={styles.subheader_text}>
-          {"Current Date: "} {curDateString}
-        </Text>
+  const renderCustomHeader = (date: any): JSX.Element => {
+    const header = date.toString("MMMM yyyy"); // MMMM dd yyyy
+    const [month, year] = header.split(" ");
+    const textStyle: TextStyle = {
+      fontSize: 24,
+      fontWeight: "bold",
+      paddingTop: 5,
+      paddingBottom: 5,
+      color: "#F6AF71",
+      paddingRight: 5,
+    };
+    const caldendarHeader: ViewStyle = {
+      flexDirection: "row",
+      width: "100%",
+      justifyContent: "center",
+      marginTop: 5,
+      marginBottom: 5,
+    };
+
+    return (
+      <View style={caldendarHeader}>
+        <Text style={textStyle}>{`${month} ${year}`}</Text>
       </View>
+    );
+  };
+
+  // state can be 'selected', 'today', 'disabled'
+  const renderCustomDay = (date: any, state: any): JSX.Element => {
+    const textStyle: TextStyle = {
+      textAlign: "center",
+      fontSize: 16,
+      fontWeight: "300",
+      marginTop: 5,
+      // position: "absolute",
+      // right: 5,
+      // top: 15,
+    };
+
+    const disabledDay: ViewStyle =
+      state === "disabled"
+        ? {
+            backgroundColor: "grey",
+          }
+        : {};
+    const selectedDay: ViewStyle =
+      state === "selected"
+        ? {
+            backgroundColor: "grey",
+          }
+        : {};
+    const todayDay: ViewStyle =
+      state === "today"
+        ? {
+            backgroundColor: "#FFD596",
+          }
+        : {};
+
+    const dateStyle: ViewStyle = {
+      height: 50,
+      width: 40,
+      borderWidth: 1,
+      borderColor: "#ADADAD",
+      borderRadius: 10,
+      backgroundColor: "#FFF4E8",
+      ...disabledDay,
+      ...selectedDay,
+      ...todayDay,
+    };
+
+    return (
+      <View style={dateStyle}>
+        <Text style={[textStyle]}>{date?.day}</Text>
+      </View>
+    );
+  };
+
+  return (
+    <View style={styles.page_container}>
+      <View style={styles.header_row}>
+        <Text style={styles.page_header}>{"Calendar Page"}</Text>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#3B82F6">Visit</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#10B981">Prescription</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#F59E0B">Docter's Appointment</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#E11D48">Negative Trend</BulletPoint>
+      </View>
+      <View style={styles.header_row}>
+        <BulletPoint color="#7C3AED">Customize</BulletPoint>
+      </View>
+
       <View style={styles.calendar_wrapper}>
         <CalendarList
-          key={calendarKey}
           horizontal={true}
           pagingEnabled={true}
-
           firstDay={1}
-
           renderHeader={renderCustomHeader}
-
+          dayComponent={({ date, state }) => {
+            return renderCustomDay(date, state);
+          }}
           theme={calendarTheme}
         />
       </View>
@@ -61,41 +157,9 @@ const CalendarPage: React.FC<CalendarPage> = () => {
   );
 };
 
-function renderCustomHeader(date: any) {
-  const header = date.toString('MMMM yyyy');
-  const [month, year] = header.split(' ');
-  const textStyle: TextStyle = {
-    fontSize: 24,
-    fontWeight: 'bold',
-    paddingTop: 10,
-    paddingBottom: 10,
-    color: "#F6AF71",
-    paddingRight: 5
-  };
-
-  return (
-    <View style={styles.calendar_header}>
-      <Text style={textStyle}>{`${month} ${year}`}</Text>
-    </View>
-  );
-}
-
 const calendarTheme = {
-  backgroundColor: "#F3F0F7",
-  calendarBackground: "#F3F0F7",
-  todayTextColor: "#F6AF71",
-  textDayFontSize: 20,
-}
-
+  // backgroundColor: "#D9D9D9",
+  calendarBackground: "rgba(0, 0, 0, 0.0)",
+};
 
 export default CalendarPage;
-
-// theme={{
-//   backgroundColor: "#F3F0F7",
-//   calendarBackground: "#F3F0F7",
-//   textDayFontSize: 16,
-//   textDayHeaderFontSize: 16,
-//   monthTextColor: "black",
-//   indicatorColor: "black",
-//   arrowColor: 'blue',
-// }}

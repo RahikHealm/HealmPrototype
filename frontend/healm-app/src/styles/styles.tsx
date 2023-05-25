@@ -5,6 +5,20 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F3F0F7",
     alignItems: "center",
   },
+  page_container: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "#F3F0F7",
+  },
+  header_row: {
+    // flexGrow: 1,
+    // backgroundColor: 'blue',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: 'flex-start',
+    marginBottom: 5,
+    marginLeft: 20,
+  },
   image: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height / 2,
@@ -13,6 +27,17 @@ export const styles = StyleSheet.create({
     paddingTop: 40,
     fontSize: 35,
     fontWeight: "400",
+  },
+  page_header: {
+    paddingTop: 40,
+    fontSize: 40,
+    fontWeight: "600",
+    textAlign: 'left'
+  },
+  category_text: {
+    fontSize: 24,
+    fontWeight: "700",
+    textAlign: 'left'
   },
   body_text: {
     paddingTop: 20,
@@ -146,19 +171,19 @@ export const styles = StyleSheet.create({
     color: "#808D9E",
   },
   elementContainer: {
-    marginVertical: 0,
+    marginVertical: 10,
   },
   calendar_wrapper: {
-    height: 400,
+    backgroundColor: "rgba(217, 217, 217, 0.21)",
+    height: 480,
     position: "absolute",
     bottom: 0,
   },
-  calendar_header: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "flex-start",
-    marginTop: 10,
-    marginBottom: 10,
+  loading_container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+
 
 });

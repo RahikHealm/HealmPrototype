@@ -9,9 +9,11 @@ interface SummaryPage {
 
 const SummaryPage: React.FC<SummaryPage> = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.header_text}>{'Summary Page'}</Text>
-        </View>
+        <View style={styles.page_container}>
+      <View style={styles.header_row}>
+        <Text style={styles.page_header}>{"Dashboard"}</Text>
+      </View>
+    </View>
     );
 }
 export default SummaryPage;
