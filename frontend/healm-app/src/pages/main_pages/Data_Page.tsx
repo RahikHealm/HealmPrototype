@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable, ScrollView } from "react-native";
+import {Text, View, Image, Pressable, ScrollView, SafeAreaView} from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
@@ -73,14 +73,14 @@ const DataPage: React.FC<DataPage> = () => {
   ];
 
   return (
-    <ScrollView> 
-    <View style={styles.page_container}>
+    <SafeAreaView style={styles.page_container}>
       <View style={styles.header_row}>
         <Text style={styles.page_header}>{"All Data"}</Text>
       </View>
       <View style={styles.elementContainer}>
         <SearchBar setSearch={setSearch} search={search} />
       </View>
+      <ScrollView>
       <View style={styles.elementContainer}>
         <CategoryGroup children={group1} />
       </View>
@@ -90,8 +90,8 @@ const DataPage: React.FC<DataPage> = () => {
       <View style={styles.elementContainer}>
         <CategoryGroup children={group3} />
       </View>
-    </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

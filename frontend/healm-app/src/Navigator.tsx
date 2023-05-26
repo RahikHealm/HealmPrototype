@@ -9,6 +9,8 @@ import Onboarding_Page_3 from "./pages/onboarding_pages/Onboarding_Page_3";
 import SignupPage from "./pages/signup_pages/Signup_Page";
 import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
+import HeartRatePage from "./pages/main_pages/HeartRatePage";
+import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
 
 
 const Stack = createNativeStackNavigator();
@@ -39,7 +41,7 @@ const Navigator = () => {
         // },
         headerShown: false,
       }}
-      initialRouteName="MainContainer" // Temporary Change
+      initialRouteName="Onboarding_1" // Temporary Change
     >
         <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
         <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
@@ -47,6 +49,8 @@ const Navigator = () => {
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
         <Stack.Screen name="MainContainer" component={MainContainer}/>
+        <Stack.Screen name="HeartRate" component={HeartRatePage}/>
+        <Stack.Screen name="BloodPressure" component={BloodPressurePage}/>
 
     </Stack.Navigator>
   </NavigationContainer>
