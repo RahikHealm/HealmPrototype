@@ -1,11 +1,11 @@
 import {
-  Text,
-  View,
-  Image,
-  Pressable,
-  TextStyle,
-  ViewStyle,
-  ActivityIndicator,
+    Text,
+    View,
+    Image,
+    Pressable,
+    TextStyle,
+    ViewStyle,
+    ActivityIndicator, SafeAreaView,
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -121,7 +121,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
   };
 
   return (
-    <View style={styles.page_container}>
+    <SafeAreaView style={styles.page_container}>
       <View style={styles.header_row}>
         <Text style={styles.page_header}>{"Calendar Page"}</Text>
       </View>
@@ -153,7 +153,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
           theme={calendarTheme}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

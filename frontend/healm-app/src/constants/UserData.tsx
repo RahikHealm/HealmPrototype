@@ -23,5 +23,12 @@ export interface VitalInfo {
   trendSummery: string;
   value: string;
   units: string;
-  history: any[]; // You can replace `any` with a specific type for the `history` array if needed
+  history: {
+    labels: string[];
+    datasets: {
+      data: number[];
+      color?: () => string;
+      strokeWidth?: number;
+    }[];
+  };
 }

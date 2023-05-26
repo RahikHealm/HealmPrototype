@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
     fontWeight: "400",
   },
   page_header: {
-    paddingTop: 40,
     fontSize: 40,
     fontWeight: "600",
     textAlign: 'left'
