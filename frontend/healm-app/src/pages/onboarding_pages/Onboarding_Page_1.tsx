@@ -3,7 +3,7 @@ import { Text, View, Image, Pressable } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
-import { shouldThrowAnErrorOutsideOfExpo } from "expo/build/environment/validatorState";
+
 
 import useDarkenOnPress from "../../hooks/useDarkenOnPress";
 
