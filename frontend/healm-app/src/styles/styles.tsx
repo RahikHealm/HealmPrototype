@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#F3F0F7",
+    paddingTop: 15,
   },
   header_row: {
     // flexGrow: 1,
@@ -41,6 +42,13 @@ export const styles = StyleSheet.create({
   body_text: {
     paddingTop: 20,
     paddingHorizontal: 25,
+    fontSize: 18,
+    textAlign: "center",
+    fontWeight: "normal",
+  },
+  normal_text: {
+    paddingTop: 20,
+    paddingHorizontal: 5,
     fontSize: 18,
     textAlign: "center",
     fontWeight: "normal",
