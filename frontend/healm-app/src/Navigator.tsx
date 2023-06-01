@@ -11,6 +11,7 @@ import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
 import HeartRatePage from "./pages/main_pages/HeartRatePage";
 import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
+import Onboarding_Page from "./pages/onboarding_pages/Onboarding_Page";
 import UnderConstruction from "./pages/underConstruction";
 
 
@@ -23,11 +24,14 @@ const Navigator = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Onboarding_1" // Temporary Change
+      initialRouteName="Onboarding_Page" // Temporary Change
     >
         <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
         <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
         <Stack.Screen name="Onboarding_3" component={Onboarding_Page_3}/>
+
+        <Stack.Screen name="Onboarding_Page" component={Onboarding_Page} />
+
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
         <Stack.Screen name="MainContainer" component={MainContainer}/>

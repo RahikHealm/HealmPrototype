@@ -3,7 +3,7 @@ import { Text, View, Image, Pressable } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
-import { shouldThrowAnErrorOutsideOfExpo } from "expo/build/environment/validatorState";
+
 
 import useDarkenOnPress from "../../hooks/useDarkenOnPress";
 
@@ -39,7 +39,7 @@ const Onboarding_Page_1: React.FC<Onboarding_Page_1> = ({ navigation }) => {
             onPressIn={() => darkenBtn.buttonPressed()}
             onPressOut={() => {
               darkenBtn.buttonNotPressed();
-              navigation.replace("Onboarding_2");
+              navigation.navigate("Onboarding_2");
             }}
           >
             <Ionicons
