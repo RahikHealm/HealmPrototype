@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#F3F0F7",
-    paddingTop: 15,
+    paddingTop: 30, // For some reason this does not affect iOS devices
   },
   header_row: {
     // flexGrow: 1,
@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 5,
     marginLeft: 20,
+
   },
   image: {
     width: Dimensions.get("window").width,

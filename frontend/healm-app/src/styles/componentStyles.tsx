@@ -6,16 +6,33 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '90%',
-        height: 125,
         backgroundColor: '#FFE8ED',
         borderWidth: 2,
         borderColor: '#fff',
         borderRadius: 20,
-        paddingHorizontal: 20,
+        paddingLeft: 20,
+        paddingRight: 0, // not doing anything for some reason
+        paddingVertical: 10,
         marginVertical: 5,
     },
     leftContainer: {
-        flex: 1,
+        flex: 8,
+        // borderColor: "red",
+        // borderWidth: 1,
+
+    },
+    middleContainer: {
+        flex: 10,
+        paddingLeft: 0,
+        // borderColor: "blue",
+        // borderWidth: 1,
+    },
+    rightContainer: {
+        flex: 2,
+        marginRight: 5,
+        // borderColor: "green",
+        // borderWidth: 1,
+        
     },
     heartRateText: {
         fontSize: 16,
@@ -53,7 +70,6 @@ export const styles = StyleSheet.create({
         color: '#848484',
         fontSize: 16,
         marginTop: 4,
-        width: 175
     },
 
 });
