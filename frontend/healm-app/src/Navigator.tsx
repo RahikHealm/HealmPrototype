@@ -11,6 +11,7 @@ import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
 import HeartRatePage from "./pages/main_pages/HeartRatePage";
 import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
+import UnderConstruction from "./pages/underConstruction";
 
 
 const Stack = createNativeStackNavigator();
@@ -20,25 +21,6 @@ const Navigator = () => {
     <NavigationContainer>
     <Stack.Navigator
       screenOptions={{
-        // headerStyle: {
-        //   backgroundColor: "transparent",
-        //   title: "",
-        // },
-        // headerTintColor: "#F2EFEA",
-        // headerTransparent: true,
-        // headerTitle: "Healm App",
-        // headerTitleStyle: {
-        //   fontWeight: "800",
-        //   fontSize: 26,
-        //   color: "#F2EFEA",
-        //   marginTop: 5,
-        //   marginLeft: "5%",
-        //   marginBottom: 30,
-        // },
-        // headerLeftContainerStyle: {
-        //   paddingLeft: 20,
-        //   paddingTop: 20,
-        // },
         headerShown: false,
       }}
       initialRouteName="Onboarding_1" // Temporary Change
@@ -51,6 +33,8 @@ const Navigator = () => {
         <Stack.Screen name="MainContainer" component={MainContainer}/>
         <Stack.Screen name="HeartRate" component={HeartRatePage}/>
         <Stack.Screen name="BloodPressure" component={BloodPressurePage}/>
+        <Stack.Screen name="UnderConstruction" component={UnderConstruction}/>
+
 
     </Stack.Navigator>
   </NavigationContainer>
