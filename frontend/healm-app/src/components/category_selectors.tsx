@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, TextInput, View, Text, ViewStyle } from "react-native";
 
 interface CategoryGroup {
@@ -75,11 +75,11 @@ const CategoryChild: React.FC<CategoryChild> = ({
   return (
     <View style={[styles.child_container, backgroundStyles]}>
       <View style={styles.lable_container}>
-        <Ionicons name={icon} color={iconColor} size={35} style={styles.icon} />
+        <MaterialCommunityIcons name={icon} color={iconColor} size={35} style={styles.icon} />
         <Text style={styles.lable_text}> {text} </Text>
       </View>
-      <Ionicons
-        name="chevron-forward-outline"
+      <MaterialCommunityIcons
+        name="chevron-right"
         color="#848484"
         size={35}
         style={styles.forward_icon}

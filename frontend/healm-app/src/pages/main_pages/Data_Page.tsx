@@ -1,4 +1,11 @@
-import {Text, View, Image, Pressable, ScrollView, SafeAreaView} from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  Pressable,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../../styles/styles";
@@ -17,7 +24,7 @@ const DataPage: React.FC<DataPage> = () => {
     {
       text: "Heart",
       bgColor: "#FFE8ED",
-      iconColor: "#A96123",
+      iconColor: "#EB4B62",
       icon: "heart",
       borderColor: "#FEED94",
     },
@@ -25,18 +32,17 @@ const DataPage: React.FC<DataPage> = () => {
       text: "Medicine",
       bgColor: "#EBF8E6",
       iconColor: "#31b788",
-      icon: "medkit",
+      icon: "medical-bag",
       borderColor: "#FEED94",
     },
   ];
 
-  // NEED DIFF ICON PACK; NO OTHER FOOD ICON AVALIABLE; CANT HAVE FAST FOOD FOR DIET ICON
   const group2: CategoryChild[] = [
     {
       text: "Diet",
       bgColor: "#FFF8E1",
       iconColor: "#EB4B62",
-      icon: "fast-food",
+      icon: "food-variant",
       borderColor: "#FFFFFF",
     },
     {
@@ -60,14 +66,14 @@ const DataPage: React.FC<DataPage> = () => {
       text: "Records",
       bgColor: "#FFF8E1",
       iconColor: "#EB4B62",
-      icon: "fast-food",
+      icon: "bookshelf",
       borderColor: "#FFFFFF",
     },
     {
       text: "Family History",
-      bgColor: "##E8F4FF",
+      bgColor: "#E8F4FF",
       iconColor: "#22538E",
-      icon: "bed",
+      icon: "history",
       borderColor: "#FFFFFF",
     },
   ];
@@ -81,15 +87,15 @@ const DataPage: React.FC<DataPage> = () => {
         <SearchBar setSearch={setSearch} search={search} />
       </View>
       <ScrollView>
-      <View style={styles.elementContainer}>
-        <CategoryGroup children={group1} />
-      </View>
-      <View style={styles.elementContainer}>
-        <CategoryGroup children={group2} />
-      </View>
-      <View style={styles.elementContainer}>
-        <CategoryGroup children={group3} />
-      </View>
+        <View style={styles.elementContainer}>
+          <CategoryGroup children={group1} />
+        </View>
+        <View style={styles.elementContainer}>
+          <CategoryGroup children={group2} />
+        </View>
+        <View style={styles.elementContainer}>
+          <CategoryGroup children={group3} />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
