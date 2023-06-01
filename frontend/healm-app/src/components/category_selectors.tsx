@@ -22,6 +22,7 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
  *
  */
 
+
 interface CategoryGroup {
   children: CategoryChild | CategoryChild[];
 }
@@ -97,7 +98,7 @@ const CategoryChild: React.FC<CategoryChild> = ({
       borderBottomLeftRadius: 25,
       borderBottomWidth: 2,
     };
-  }
+  } 
   if (isAlone) {
     backgroundStyles = {
       backgroundColor: bgColor,

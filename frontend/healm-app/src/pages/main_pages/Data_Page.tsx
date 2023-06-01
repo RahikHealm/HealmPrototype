@@ -28,6 +28,7 @@ const DataPage: React.FC<DataPage> = () => {
       icon: "heart",
       borderColor: "#FFFFFF",
       url: "HeartPage"
+     
     },
     {
       text: "Medicine",
