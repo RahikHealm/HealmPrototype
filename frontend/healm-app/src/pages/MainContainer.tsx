@@ -25,7 +25,9 @@ const MainContainer: React.FC<MainContainer> = () => {
   return (
     <Tab.Navigator
       initialRouteName={summaryName}
+      
       screenOptions={({ route }) => ({
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({ focused, color, size }) => {
           // typing this to string gives it an error
           // not sure why Ionicons is so picky

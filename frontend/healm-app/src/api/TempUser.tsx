@@ -72,7 +72,7 @@ userData = {
 
 
 let numUsers = 1; // initialize with the number of default users
-let currentUser: number; // Creating a variable to store the current user that is signed in
+let currentUser: number = 0; // Creating a variable to store the current user that is signed in
 
 export function checkUsername_password(userName: string, password: string) {
   for (const user in userData) {
@@ -95,11 +95,11 @@ export function getCurrentUserId() {
   return currentUser;
 }
 
-export function addToUserData(user: any) {
-  user.userid = numUsers;
-  userData["user" + numUsers] = user;
-  numUsers++;
-}
+// export function addToUserData(user: any) {
+//   user.userid = numUsers;
+//   userData["user" + numUsers] = user;
+//   numUsers++;
+// }
 export function getUserData() : any {
   for (const user in userData) {
     let currUser = userData[user];
