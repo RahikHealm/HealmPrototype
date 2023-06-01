@@ -47,7 +47,7 @@ const HeartRatePage: React.FC<HeartRatePage> = ({ navigation }) => {
             </Text>
             <Text style={styles.smallText}>Average Heart Rate for Today</Text>
           </View>
-          <Pressable style={styles.detailsButton}>
+          <Pressable style={styles.detailsButton} onPress={() => navigation.navigate("UnderConstruction")}>
             <Text style={{}}>Details</Text>
             <MaterialIcons name="chevron-right" size={25} color="black" />
           </Pressable>

@@ -32,7 +32,7 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
           <>
             <HeartRateComponent onPress={() => navigation.navigate("HeartRate")} />
 
-            <BloodPressureComponent />
+            <BloodPressureComponent onPress={()=> navigation.navigate("BloodPressure")}/>
             <BloodSugarComponent />
           </>
         )}

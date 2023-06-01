@@ -2,7 +2,6 @@ import React from "react";
 import {SafeAreaView, TouchableOpacity, View, Text, StyleSheet, Animated} from "react-native";
 import navigator from "../Navigator";
 import { Entypo } from '@expo/vector-icons';
-import * as Animatable from 'react-native-animatable';
 import {Feather, MaterialIcons} from "@expo/vector-icons";
 
 interface UnderConstruction {
@@ -14,7 +13,7 @@ const UnderConstruction: React.FC<UnderConstruction> = ({ navigation }) =>  {
         <SafeAreaView style={{flex: 1}}>
             <TouchableOpacity
                 style={styles.backButton}
-                onPress={navigation.pop()}
+                onPress={() => navigation.pop()}
             >
                 <Feather name="chevron-left" size={30} color="#848484" />
             </TouchableOpacity>
