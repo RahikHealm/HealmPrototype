@@ -10,10 +10,8 @@ import {
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
-import { StackActions } from "@react-navigation/native";
-import { checkUsername_password } from "../../api/TempUser";
 import { Ionicons } from "@expo/vector-icons";
-import authenticateUser from "../../api/userAuth_api";
+
 import {
   auth,
   signInWithEmailAndPassword,

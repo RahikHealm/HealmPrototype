@@ -10,9 +10,7 @@ import {
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
-import { StackActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import registerUser from "../../api/userRegistration_api";
 import { auth, createUserWithEmailAndPassword, onAuthStateChanged } from "../../api/firebase";
 
 interface SignupPage {
