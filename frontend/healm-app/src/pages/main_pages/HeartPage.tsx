@@ -3,9 +3,9 @@ import {getUserData} from "../../api/TempUser";
 import {FontAwesome, MaterialIcons} from '@expo/vector-icons';
 import React from "react";
 import {Pressable, SafeAreaView, View, Text} from "react-native";
-import HeartRateComponent from "../../components/HeartRateComponenet";
-import BloodPressureComponent from "../../components/BloodPressureComponent";
-import BloodSugarComponent from "../../components/BloodSugarComponenet";
+import HeartRateComponent from "../../components/heart_rate_componenet";
+import BloodPressureComponent from "../../components/blood_pressure_component";
+import BloodSugarComponent from "../../components/blood_sugar_component";
 
 interface HeartPage {
     navigation: any;
