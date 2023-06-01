@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Pressable,
   SafeAreaView,
@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
   ScrollView,
-  Alert
+  Alert,
 } from "react-native";
 import { styles } from "../../styles/styles";
 import { StatusBar } from "expo-status-bar";
@@ -14,29 +14,40 @@ import { StackActions } from "@react-navigation/native";
 import { checkUsername_password } from "../../api/TempUser";
 import { Ionicons } from "@expo/vector-icons";
 import authenticateUser from "../../api/userAuth_api";
+import {
+  auth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "../../api/firebase";
 
 interface LoginPage {
   navigation: any;
 }
 
 const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
-  const [userName, setUserName] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = () => {
-    if (userName !== "" && password !== "") {
-      authenticateUser(userName, password)
-        .then(() => {
-          navigation.navigate("MainContainer");
-        })
-        .catch((error: Error) => {
-          Alert.alert("Error", error.message);
-        });
-    } else {
-      Alert.alert("Error", "Username or Password incomplete");
-    }
+  // listener to see when a user has signed up
+  React.useEffect(() => {
+    const unsubscribe: any = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigation.replace("MainContainer");
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Logged in with " + user.email);
+      })
+      .catch((error) => Alert.alert("Error", error.message));
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -55,7 +66,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               style={styles.text_input_text}
               keyboardType="email-address"
               returnKeyType="done"
-              onChangeText={(userInputValue) => setUserName(userInputValue)}
+              onChangeText={(userInputValue) => setEmail(userInputValue)}
               placeholder={"Type your email"}
             />
           </View>
@@ -98,7 +109,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               styles.login_button,
               pressed && { backgroundColor: "#FFB75F" },
             ]}
-            onPressOut={() => navigate()}
+            onPressOut={handleLogin}
           >
             <Text style={styles.login_button_text}>Sign In</Text>
           </Pressable>
@@ -115,7 +126,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN IN WITH APPLE
+              // SIGN IN WITH APPLE
             }}
           >
             <Ionicons
@@ -132,7 +143,7 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               pressed && { backgroundColor: "#D2D2D2" },
             ]}
             onPressOut={() => {
-                // SIGN IN WITH GOOGLE
+              // SIGN IN WITH GOOGLE
             }}
           >
             <Ionicons

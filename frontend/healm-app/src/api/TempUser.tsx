@@ -101,11 +101,12 @@ export function addToUserData(user: any) {
   numUsers++;
 }
 export function getUserData() : any {
-  for (const user in userData) {
-    let currUser = userData[user];
-    if (currUser.userId === getCurrentUserId()) {
-      return currUser;
-    }
-  }
-  return null;
+  return userData.user1;
+  // for (const user in userData) {
+  //   let currUser = userData[user];
+  //   if (currUser.userId === getCurrentUserId()) {
+  //     return currUser;
+  //   }
+  // }
+  // return null;
 }

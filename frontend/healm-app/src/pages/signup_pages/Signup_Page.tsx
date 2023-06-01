@@ -13,6 +13,7 @@ import { StatusBar } from "expo-status-bar";
 import { StackActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import registerUser from "../../api/userRegistration_api";
+import { auth, createUserWithEmailAndPassword, onAuthStateChanged } from "../../api/firebase";
 
 interface SignupPage {
   navigation: any;
@@ -23,19 +24,26 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
   const [fullName, setFullName] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  async function navigate() {
-    if (email !== "" && fullName !== "") {
-      registerUser(email, fullName, password)
-        .then(() => {
-          navigation.navigate("Login");
-        })
-        .catch((error: Error) => {
-          Alert.alert("Error", error.message);
-        });
-    } else {
-      Alert.alert("Error", "Complete all fields");
-    }
-  }
+  // listener to see when a user has signed up
+  React.useEffect(()=> {
+    const unsubscribe:any = onAuthStateChanged(auth, (user) => {
+      if(user){
+        navigation.replace("MainContainer");
+      }
+    });
+
+    return unsubscribe;
+  }, [])
+
+  const handleSignup = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Signed up with " + user.email);
+      })
+      .catch((error) => Alert.alert("Error", error.message));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -90,7 +98,7 @@ const SignupPage: React.FC<SignupPage> = ({ navigation }) => {
               styles.login_button,
               pressed && { backgroundColor: "#FFB75F" },
             ]}
-            onPressOut={() => navigate()}
+            onPressOut={handleSignup}
           >
             <Text style={styles.login_button_text}>Sign Up</Text>
           </Pressable>
