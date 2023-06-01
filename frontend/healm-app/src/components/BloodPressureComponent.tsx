@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import {AntDesign, Feather} from '@expo/vector-icons';
 import {getUserData} from "../api/TempUser";
 import {styles} from "../styles/componentStyles";

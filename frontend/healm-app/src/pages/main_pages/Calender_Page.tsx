@@ -132,7 +132,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
         <BulletPoint color="#10B981">Prescription</BulletPoint>
       </View>
       <View style={styles.header_row}>
-        <BulletPoint color="#F59E0B">Docter's Appointment</BulletPoint>
+        <BulletPoint color="#F59E0B">Doctor's Appointment</BulletPoint>
       </View>
       <View style={styles.header_row}>
         <BulletPoint color="#E11D48">Negative Trend</BulletPoint>

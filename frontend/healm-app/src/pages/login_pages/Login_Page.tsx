@@ -91,7 +91,6 @@ const LoginPage: React.FC<LoginPage> = ({ navigation }) => {
               marginRight: 5,
               flexDirection: "row",
             }}
-            onPress={() => navigation.dispatch(StackActions.replace("Login"))}
           >
             <Text
               style={{

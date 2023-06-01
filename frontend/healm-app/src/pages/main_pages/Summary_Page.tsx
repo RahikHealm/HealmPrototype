@@ -5,20 +5,27 @@ import { styles } from "../../styles/styles";
 import HeartRateComponent from "../../components/HeartRateComponenet";
 import BloodPressureComponent from "../../components/BloodPressureComponent";
 import BloodSugarComponent from "../../components/BloodSugarComponenet";
+import {getUserData} from "../../api/TempUser";
 
 interface SummaryPage {
-
+    navigation: any;
 }
 
-const SummaryPage: React.FC<SummaryPage> = () => {
+const SummaryPage: React.FC<SummaryPage> = ({navigation}) => {
+    const userData = getUserData();
     return (
         <SafeAreaView style={styles.page_container}>
-      <View style={styles.header_row}>
-        <Text style={styles.page_header}>{"Dashboard"}</Text>
-      </View>
-            <HeartRateComponent/>
+            <View style={styles.header_row}>
+                <Text style={styles.page_header}>{"Dashboard"}</Text>
+            </View>
+            {!userData?.patient  && ( <>
+            <Pressable onPress={navigation.navigate("HeartRate")}>
+                <HeartRateComponent/>
+            </Pressable>
             <BloodPressureComponent/>
             <BloodSugarComponent/>
+                </>
+                )}
     </SafeAreaView>
     );
 }
