@@ -13,7 +13,6 @@ import BloodSugarPage from "./pages/main_pages/BloodSugarPage";
 import UnderConstruction from "./pages/underConstruction";
 import HeartPage from "./pages/main_pages/HeartPage";
 
-
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
