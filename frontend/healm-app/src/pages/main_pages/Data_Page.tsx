@@ -26,18 +26,15 @@ const DataPage: React.FC<DataPage> = () => {
       bgColor: "#FFE8ED",
       iconColor: "#EB4B62",
       icon: "heart",
-      borderColor: "#FEED94",
+      borderColor: "#FFFFFF",
     },
     {
       text: "Medicine",
       bgColor: "#EBF8E6",
       iconColor: "#31b788",
       icon: "medical-bag",
-      borderColor: "#FEED94",
+      borderColor: "#FFFFFF",
     },
-  ];
-
-  const group2: CategoryChild[] = [
     {
       text: "Diet",
       bgColor: "#FFF8E1",
@@ -59,9 +56,6 @@ const DataPage: React.FC<DataPage> = () => {
       icon: "walk",
       borderColor: "#FFFFFF",
     },
-  ];
-
-  const group3: CategoryChild[] = [
     {
       text: "Records",
       bgColor: "#FFF8E1",
@@ -87,15 +81,15 @@ const DataPage: React.FC<DataPage> = () => {
         <SearchBar setSearch={setSearch} search={search} />
       </View>
       <ScrollView>
-        <View style={styles.elementContainer}>
-          <CategoryGroup children={group1} />
-        </View>
-        <View style={styles.elementContainer}>
-          <CategoryGroup children={group2} />
-        </View>
-        <View style={styles.elementContainer}>
-          <CategoryGroup children={group3} />
-        </View>
+        {group1
+        .filter((item) => item.text.includes(search.toLowerCase()))
+        .map((child, index) => {
+          return (
+            <View style={{marginVertical: 5}}>
+              <CategoryGroup key={index} children={child} />
+            </View>
+          );
+        })}
       </ScrollView>
     </SafeAreaView>
   );

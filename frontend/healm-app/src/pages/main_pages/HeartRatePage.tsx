@@ -10,8 +10,7 @@ import {
 import { styles } from "../../styles/heartPagesStyles";
 import { getUserData } from "../../api/TempUser";
 import { LineChart } from "react-native-chart-kit";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { Touchable } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 interface HeartRatePage {
   navigation: any;
 }

@@ -3,6 +3,17 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, TextInput, View, Text, ViewStyle } from "react-native";
 
+/**
+ * This should only be a Category Components
+ *
+ * The reason there is a Category Child and Category group is because the design was at first to have
+ * the categories be grouped together. I think it's weird to have that when there is a search function too
+ * so the Grouping is not really being used.
+ *
+ * Still left it up in case design schema changes again.
+ *
+ */
+
 interface CategoryGroup {
   children: CategoryChild | CategoryChild[];
 }
@@ -15,10 +26,19 @@ interface CategoryChild {
   text: string;
   isTop?: boolean;
   isBottom?: boolean;
+  isAlone?: boolean;
 }
 
 const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
   const childElements = Array.isArray(children) ? children : [children];
+
+  if (childElements.length === 1) {
+    return (
+      <View style={styles.group_container}>
+        <CategoryChild isAlone={true} {...childElements[0]} />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.group_container}>
@@ -44,6 +64,7 @@ const CategoryChild: React.FC<CategoryChild> = ({
   text,
   isTop,
   isBottom,
+  isAlone,
 }) => {
   let backgroundStyles: ViewStyle = {
     backgroundColor: bgColor,
@@ -70,12 +91,24 @@ const CategoryChild: React.FC<CategoryChild> = ({
 
       borderBottomWidth: 2,
     };
+  } if(isAlone){
+    backgroundStyles = {
+      backgroundColor: bgColor,
+      borderColor: borderColor,
+      borderRadius: 25,
+      borderWidth: 2,
+    };
   }
 
   return (
     <View style={[styles.child_container, backgroundStyles]}>
       <View style={styles.lable_container}>
-        <MaterialCommunityIcons name={icon} color={iconColor} size={35} style={styles.icon} />
+        <MaterialCommunityIcons
+          name={icon}
+          color={iconColor}
+          size={35}
+          style={styles.icon}
+        />
         <Text style={styles.lable_text}> {text} </Text>
       </View>
       <MaterialCommunityIcons
