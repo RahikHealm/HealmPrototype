@@ -39,7 +39,7 @@ const Onboarding_Page_1: React.FC<Onboarding_Page_1> = ({ navigation }) => {
             onPressIn={() => darkenBtn.buttonPressed()}
             onPressOut={() => {
               darkenBtn.buttonNotPressed();
-              navigation.replace("Onboarding_2");
+              navigation.navigate("Onboarding_2");
             }}
           >
             <Ionicons
