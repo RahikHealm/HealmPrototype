@@ -182,7 +182,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: 100,
         height: 35,
-        marginLeft: 40,
+        marginLeft: 30,
+        marginRight: 10,
     },
     iconWrapper: {
         position: 'absolute',
