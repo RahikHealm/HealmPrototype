@@ -10,11 +10,11 @@ import { AntDesign, Feather } from "@expo/vector-icons";
 import { getUserData } from "../api/TempUser";
 import { styles } from "../styles/componentStyles";
 
-interface HeartRateComponenet {
-    onPress: () => void
+interface SummaryComponenet {
+    onPress?: () => void
 }
 
-const HeartRateComponent: React.FC<HeartRateComponenet> = ({onPress}) => {
+const HeartRateComponent: React.FC<SummaryComponenet> = ({onPress}) => {
   return (
     <Pressable 
     onPress={onPress}>
