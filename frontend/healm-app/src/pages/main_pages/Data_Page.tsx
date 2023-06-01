@@ -41,16 +41,16 @@ const DataPage: React.FC<DataPage> = () => {
     },
     {
       text: "Sleep",
-      bgColor: "##E8F4FF",
+      bgColor: "#E8F4FF",
       iconColor: "#22538E",
       icon: "bed",
       borderColor: "#FFFFFF",
     },
     {
-      text: "Diet",
+      text: "Exercise",
       bgColor: "#FFF8E1",
       iconColor: "#E6DC6F",
-      icon: "fast-food",
+      icon: "walk",
       borderColor: "#FFFFFF",
     },
   ];
