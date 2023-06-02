@@ -85,8 +85,8 @@ const DataPage: React.FC<DataPage> = () => {
         .filter((item) => item.text.includes(search.toLowerCase()))
         .map((child, index) => {
           return (
-            <View style={{marginVertical: 5}}>
-              <CategoryGroup key={index} children={child} />
+            <View key={index}  style={{marginVertical: 5}}>
+              <CategoryGroup children={child} />
             </View>
           );
         })}

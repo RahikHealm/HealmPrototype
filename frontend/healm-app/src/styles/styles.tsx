@@ -11,9 +11,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F3F0F7",
     paddingTop: 30, // For some reason this does not affect iOS devices
   },
+
   header_row: {
-    // flexGrow: 1,
-    // backgroundColor: 'blue',
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: 'flex-start',
@@ -40,6 +39,7 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: 'left'
   },
+
   body_text: {
     paddingTop: 20,
     paddingHorizontal: 25,
