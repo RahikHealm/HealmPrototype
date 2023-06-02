@@ -18,7 +18,7 @@ import Dashboard from "../../components/dashboard_component";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 
-import MedicationComponent from '../../components/MedicationComponent';
+import MedicationComponent from '../../components/medication_component';
 
 interface SummaryPage {
   navigation: StackNavigationProp<any, any>;

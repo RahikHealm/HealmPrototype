@@ -3,10 +3,7 @@ import {getUserData} from "../../api/TempUser";
 import {FontAwesome, MaterialIcons} from '@expo/vector-icons';
 import React from "react";
 import {Pressable, SafeAreaView, View, Text} from "react-native";
-import HeartRateComponent from "../../components/HeartRateComponenet";
-import BloodPressureComponent from "../../components/BloodPressureComponent";
-import BloodSugarComponent from "../../components/BloodSugarComponenet";
-import MedicationComponent from "../../components/MedicationComponent";
+import MedicationComponent from "../../components/medication_component";
 
 interface MedicationsPage {
     navigation: any;
