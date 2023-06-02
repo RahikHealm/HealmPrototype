@@ -147,7 +147,7 @@ const Onboarding_Page: React.FC<Onboarding_Page> = ({ navigation }) => {
           <Text style={styles.normal_text}>Already have an account?</Text>
         </Pressable>
         <Pressable onPressOut={() => navigation.navigate("Login")}>
-          <Text style={[styles.normal_text, { color: "#F6AF71" }]}>
+          <Text style={[styles.normal_text, { color: "#F6AF71", fontWeight: "500" }]}>
             Log in here!
           </Text>
         </Pressable>

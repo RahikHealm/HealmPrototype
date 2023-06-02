@@ -1,7 +1,26 @@
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet, View, Text, ViewStyle, Pressable } from "react-native";
-import {NavigationProp, useNavigation } from "@react-navigation/native";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Text,
+  ViewStyle,
+  Pressable,
+} from "react-native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+
+/**
+ * This should only be a Category Components
+ *
+ * The reason there is a Category Child and Category group is because the design was at first to have
+ * the categories be grouped together. I think it's weird to have that when there is a search function too
+ * so the Grouping is not really being used.
+ *
+ * Still left it up in case design schema changes again.
+ *
+ */
 
 interface CategoryGroup {
   children: CategoryChild | CategoryChild[];
@@ -15,22 +34,31 @@ interface CategoryChild {
   text: string;
   isTop?: boolean;
   isBottom?: boolean;
+
+  isAlone?: boolean;
   url: string; // Change 'pageName' to 'url'
 }
 
 const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
   const childElements = Array.isArray(children) ? children : [children];
 
-  return (
+  if (childElements.length === 1) {
+    return (
       <View style={styles.group_container}>
-        {childElements.map((child, index) => {
-          if (index === 0) {
-            return <CategoryChild key={index} isTop={true} {...child} />;
-          }
-          if (index === childElements.length - 1) {
-            return <CategoryChild key={index} isBottom={true} {...child} />;
-          }
+        <CategoryChild isAlone={true} {...childElements[0]} />
+      </View>
+    );
+  }
 
+  return (
+    <View style={styles.group_container}>
+      {childElements.map((child, index) => {
+        if (index === 0) {
+          return <CategoryChild key={index} isTop={true} {...child} />;
+        }
+        if (index === childElements.length - 1) {
+          return <CategoryChild key={index} isBottom={true} {...child} />;
+        }
           return <CategoryChild key={index} {...child} />;
         })}
       </View>
@@ -38,15 +66,16 @@ const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
 };
 
 const CategoryChild: React.FC<CategoryChild> = ({
-                                                  icon,
-                                                  iconColor,
-                                                  bgColor,
-                                                  borderColor,
-                                                  text,
-                                                  isTop,
-                                                  isBottom,
-                                                  url, // Change 'pageName' to 'url'
-                                                }) => {
+  icon,
+  iconColor,
+  bgColor,
+  borderColor,
+  text,
+  isTop,
+  isBottom,
+  isAlone,
+  url, // Change 'pageName' to 'url'
+}) => {
   let backgroundStyles: ViewStyle = {
     backgroundColor: bgColor,
     borderColor: borderColor,
@@ -68,6 +97,14 @@ const CategoryChild: React.FC<CategoryChild> = ({
       borderBottomLeftRadius: 25,
       borderBottomWidth: 2,
     };
+  } 
+  if (isAlone) {
+    backgroundStyles = {
+      backgroundColor: bgColor,
+      borderColor: borderColor,
+      borderRadius: 25,
+      borderWidth: 2,
+    };
   }
 
   const navigation = useNavigation<NavigationProp<any>>();
@@ -78,20 +115,25 @@ const CategoryChild: React.FC<CategoryChild> = ({
   };
 
   return (
-      <Pressable onPressOut={handlePress}>
-        <View style={[styles.child_container, backgroundStyles]}>
-          <View style={styles.label_container}>
-            <Ionicons name={icon} color={iconColor} size={35} style={styles.icon} />
-            <Text style={styles.label_text}>{text}</Text>
-          </View>
-          <Ionicons
-              name="chevron-forward-outline"
-              color="#848484"
-              size={35}
-              style={styles.forward_icon}
+    <Pressable onPressOut={handlePress}>
+      <View style={[styles.child_container, backgroundStyles]}>
+        <View style={styles.label_container}>
+          <MaterialCommunityIcons
+            name={icon}
+            color={iconColor}
+            size={35}
+            style={styles.icon}
           />
+          <Text style={styles.label_text}>{text}</Text>
         </View>
-      </Pressable>
+        <MaterialCommunityIcons
+          name="chevron-right"
+          color="#848484"
+          size={35}
+          style={styles.forward_icon}
+        />
+      </View>
+    </Pressable>
   );
 };
 

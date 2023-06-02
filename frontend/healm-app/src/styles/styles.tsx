@@ -9,16 +9,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#F3F0F7",
-    paddingTop: 15,
+    paddingTop: 30, // For some reason this does not affect iOS devices
   },
+
   header_row: {
-    // flexGrow: 1,
-    // backgroundColor: 'blue',
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: 'flex-start',
     marginBottom: 5,
     marginLeft: 20,
+
   },
   image: {
     width: Dimensions.get("window").width,
@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: 'left'
   },
+
   body_text: {
     paddingTop: 20,
     paddingHorizontal: 25,
@@ -182,7 +183,8 @@ export const styles = StyleSheet.create({
   },
   calendar_wrapper: {
     backgroundColor: "rgba(217, 217, 217, 0.21)",
-    height: 480,
+    //height: 480,
+    height: Dimensions.get("window").height * .6486,
     position: "absolute",
     bottom: 0,
   },

@@ -18,7 +18,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({
         style={[
           styles.dot,
           color ? { backgroundColor: color } : {},
-          fontSize ? {height: fontSize * .375, width: fontSize * .375} : {}
+          fontSize ? {height: fontSize * .375, width: fontSize * .375, marginTop: fontSize * .5} : {}
           ,
         ]}
       />
@@ -32,7 +32,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   dot: {
     backgroundColor: "black",
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     height: 6,
     width: 6,
     borderRadius: 50,
+    marginTop: 5
   },
   bullet_text: {
     fontSize: 16,

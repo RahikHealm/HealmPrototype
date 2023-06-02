@@ -6,6 +6,7 @@ export interface UserData {
     password: string;
     patient: {
       [patientId: string]: PatientData;
+
     };
   };
 }
