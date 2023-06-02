@@ -13,6 +13,18 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 20,
         marginVertical: 5,
+    },medicationContainer: {
+        alignSelf: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '90%',
+        height: 125,
+        backgroundColor: '#EBF8E6',
+        borderWidth: 2,
+        borderColor: '#fff',
+        borderRadius: 20,
+        paddingHorizontal: 20,
+        marginVertical: 5,
     },
     leftContainer: {
         flex: 1,
@@ -20,6 +32,11 @@ export const styles = StyleSheet.create({
     heartRateText: {
         fontSize: 16,
         color: '#EB4B62',
+        marginLeft: 10,
+    },
+    medicationText: {
+        fontSize: 16,
+        color: '#10B981',
         marginLeft: 10,
     },
     timeText: {

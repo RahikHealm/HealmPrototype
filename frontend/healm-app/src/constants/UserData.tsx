@@ -5,15 +5,19 @@ export interface UserData {
     email: string;
     password: string;
     patient: {
-      [patientId: string]: {
-        patientId: number;
-        heartCategoryInfo: {
-          heartRate: VitalInfo;
-          bloodPressure: VitalInfo;
-          bloodSugar: VitalInfo;
-        };
-      };
+      [patientId: string]: PatientData;
     };
+  };
+}
+
+export interface PatientData {
+  heartCategoryInfo: {
+    heartRate: VitalInfo;
+    bloodPressure: VitalInfo;
+    bloodSugar: VitalInfo;
+  };
+  medications: {
+    [medicationId: string]: VitalInfo;
   };
 }
 

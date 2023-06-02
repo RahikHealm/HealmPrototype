@@ -28,7 +28,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#31b788",
       icon: "medkit",
       borderColor: "#FEED94",
-      url: "UnderConstruction"
+      url: "MedicationsPage"
     },
   ];
 

@@ -8,6 +8,7 @@ import BloodSugarComponent from "../../components/BloodSugarComponenet";
 import {getUserData} from "../../api/TempUser";
 
 import { StackNavigationProp } from '@react-navigation/stack';
+import MedicationComponent from '../../components/MedicationComponent';
 
 interface SummaryPage {
     navigation: StackNavigationProp<any, any>;
