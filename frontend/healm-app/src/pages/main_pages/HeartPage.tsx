@@ -2,7 +2,7 @@ import { styles } from "../../styles/heartPagesStyles";
 import { getUserData } from "../../api/TempUser";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import {Pressable, SafeAreaView, View, Text} from "react-native";
+import {Pressable, SafeAreaView, View, Text, TouchableOpacity} from "react-native";
 import HeartRateComponent from "../../components/heart_rate_componenet";
 import BloodPressureComponent from "../../components/blood_pressure_component";
 import BloodSugarComponent from "../../components/blood_sugar_component";
@@ -15,12 +15,9 @@ const HeartPage: React.FC<HeartPage> = ({ navigation }) => {
     <SafeAreaView>
       <View style={{ alignItems: "center" }}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Pressable
-            style={{ flexDirection: "row", marginLeft: 10 }}
-            onPressOut={() => navigation.pop()}
-          >
-            <MaterialIcons name="chevron-left" size={45} color="black" />
-          </Pressable>
+        <TouchableOpacity activeOpacity={0.75} onPress={() => navigation.pop()}>
+          <MaterialIcons name="chevron-left" size={50} color="#848484" />
+        </TouchableOpacity>
           <View style={styles.container}>
             <Text
               style={{

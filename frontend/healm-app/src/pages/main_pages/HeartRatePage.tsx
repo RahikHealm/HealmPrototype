@@ -32,8 +32,8 @@ const HeartRatePage: React.FC<HeartRatePage> = ({ navigation }) => {
         <Text style={{ fontSize: 35, fontWeight: "bold" }}>Heart Rate</Text>
       </View>
       <View style={styles.headerLine} />
-      <View style={{ backgroundColor: "white", height: 300, borderRadius: 20 }}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View style={styles.paper_data}>
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
           <View>
             <Text style={styles.heartRateText}>Heart Rate</Text>
             <Text style={styles.numberText}>
@@ -46,7 +46,10 @@ const HeartRatePage: React.FC<HeartRatePage> = ({ navigation }) => {
             </Text>
             <Text style={styles.smallText}>Average Heart Rate for Today</Text>
           </View>
-          <Pressable style={styles.detailsButton} onPress={() => navigation.navigate("UnderConstruction")}>
+          <Pressable
+            style={styles.detailsButton}
+            onPress={() => navigation.navigate("UnderConstruction")}
+          >
             <Text style={{}}>Details</Text>
             <MaterialIcons name="chevron-right" size={25} color="black" />
           </Pressable>
@@ -81,13 +84,7 @@ const HeartRatePage: React.FC<HeartRatePage> = ({ navigation }) => {
         />
       </View>
       <View
-        style={{
-          backgroundColor: "white",
-          width: Dimensions.get("screen").width * 0.9,
-          borderRadius: 20,
-          marginTop: 25,
-          padding: 25,
-        }}
+        style={styles.paper_trend}
       >
         <Text style={styles.bpmText}>Trend Data</Text>
         <Text style={styles.trendDataText}>

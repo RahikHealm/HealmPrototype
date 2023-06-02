@@ -10,16 +10,14 @@ import {
 import { styles } from "../../styles/heartPagesStyles";
 import { getUserData } from "../../api/TempUser";
 import { LineChart } from "react-native-chart-kit";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import SettingsPage from "./Settings_Page";
-import MainContainer from "./../MainContainer"
+import { MaterialIcons } from "@expo/vector-icons";
 interface BloodPressurePage {
-    navigation: any,
+  navigation: any;
 }
-const BloodPressurePage: React.FC<BloodPressurePage> = ({navigation}) => {
+const BloodPressurePage: React.FC<BloodPressurePage> = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-        <View
+      <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -33,88 +31,86 @@ const BloodPressurePage: React.FC<BloodPressurePage> = ({navigation}) => {
 
         <Text style={{ fontSize: 35, fontWeight: "bold" }}>Blood Pressure</Text>
       </View>
-        <View style={styles.headerLine} />
-        <View
-          style={{ backgroundColor: "white", height: 300, borderRadius: 20 }}
-        >
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <View>
-              <Text style={styles.heartRateText}>Bloor Pressure</Text>
-              <Text style={styles.numberText}>
-                {
+      <View style={styles.headerLine} />
+      <View style={styles.paper_data}>
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+          <View>
+            <Text style={styles.heartRateText}>Blood Pressure</Text>
+            <Text style={styles.numberText}>
+              {
+                getUserData().patient.patient1.heartCategoryInfo.bloodPressure
+                  .value
+              }
+              <Text style={styles.bpmText}>
+                {" " +
                   getUserData().patient.patient1.heartCategoryInfo.bloodPressure
-                    .value
-                }
-                <Text style={styles.bpmText}>
-                  {" " +
-                    getUserData().patient.patient1.heartCategoryInfo
-                      .bloodPressure.units}
-                </Text>
+                    .units}
               </Text>
-              <Text style={styles.smallText}>
-                Average Blood Pressure for Today
-              </Text>
-            </View>
-            <Pressable style={styles.detailsButton} onPress={() => navigation.navigate("UnderConstruction")}>
-              <Text style={{}}>Details</Text>
-              <MaterialIcons name="chevron-right" size={25} color="black" />
-            </Pressable>
+            </Text>
+            <Text style={styles.smallText}>
+              Avg Blood Pressure for Today
+            </Text>
           </View>
-          <LineChart
-            data={
-              getUserData().patient.patient1.heartCategoryInfo.bloodPressure
-                .history
-            }
-            width={Dimensions.get("screen").width * 0.9}
-            height={175}
-            chartConfig={{
-              backgroundColor: "#ffffff",
-              backgroundGradientFrom: "#ffffff",
-              backgroundGradientTo: "#ffffff",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => "#ffffff",
-              labelColor: (opacity = 1) => "#000000",
-              style: {
-                borderRadius: 0,
-              },
-              propsForDots: {
-                r: "0",
-                strokeWidth: "0",
-                stroke: "#ffffff",
-              },
-            }}
-            bezier
-            style={{
-              marginVertical: 8,
-              borderRadius: 20,
-            }}
-          />
+          <Pressable
+            style={styles.detailsButton}
+            onPress={() => navigation.navigate("UnderConstruction")}
+          >
+            <Text style={{}}>Details</Text>
+            <MaterialIcons name="chevron-right" size={25} color="black" />
+          </Pressable>
         </View>
-        <View
-          style={{
-            backgroundColor: "white",
-            width: Dimensions.get("screen").width * 0.9,
-            borderRadius: 20,
-            marginTop: 25,
-            padding: 25,
+        <LineChart
+          data={
+            getUserData().patient.patient1.heartCategoryInfo.bloodPressure
+              .history
+          }
+          width={Dimensions.get("screen").width * 0.9}
+          height={175}
+          chartConfig={{
+            backgroundColor: "#ffffff",
+            backgroundGradientFrom: "#ffffff",
+            backgroundGradientTo: "#ffffff",
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => "#ffffff",
+            labelColor: (opacity = 1) => "#000000",
+            style: {
+              borderRadius: 0,
+            },
+            propsForDots: {
+              r: "0",
+              strokeWidth: "0",
+              stroke: "#ffffff",
+            },
           }}
-        >
-          <Text style={styles.bpmText}>Trend Data</Text>
-          <Text style={styles.trendDataText}>
-            Grandma had{" "}
-            <Text style={styles.trendDataTextHighLight}>1 irregularity</Text>{" "}
-            today at 2:34 PM. This is in line for her weekly trend;
-            <Text style={styles.trendDataTextHighLight}>
-              {" "}
-              2 irregularities
-            </Text>{" "}
-            yesterday,{" "}
-            <Text style={styles.trendDataTextHighLight}>1 irregularity</Text> on
-            Monday,
-            <Text style={styles.trendDataTextHighLight}> 2 irregularities</Text>{" "}
-            on sunday.
-          </Text>
-        </View>
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 20,
+          }}
+        />
+      </View>
+      <View
+        style={styles.paper_trend}
+      >
+        <Text style={styles.bpmText}>Trend Data</Text>
+        <Text style={styles.trendDataText}>
+          Grandma had{" "}
+          <Text style={styles.trendDataTextHighLight}>1 irregularity</Text>{" "}
+          today at 2:34 PM. This is in line for her weekly trend;
+          <Text style={styles.trendDataTextHighLight}>
+            {" "}
+            2 irregularities
+          </Text>{" "}
+          yesterday,{" "}
+          <Text style={styles.trendDataTextHighLight}>1 irregularity</Text> on
+          Monday,
+          <Text style={styles.trendDataTextHighLight}>
+            {" "}
+            2 irregularities
+          </Text>{" "}
+          on sunday.
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };

@@ -57,7 +57,9 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
             <BloodPressureComponent
               onPress={() => navigation.navigate("BloodPressure")}
             />
-            <BloodSugarComponent />
+            <BloodSugarComponent
+              onPress={() => navigation.navigate("BloodSugar")}
+            />
           </>
         )}
       </ScrollView>
