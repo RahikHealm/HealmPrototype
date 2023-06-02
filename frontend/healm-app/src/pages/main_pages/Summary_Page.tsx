@@ -7,8 +7,10 @@ import BloodPressureComponent from "../../components/BloodPressureComponent";
 import BloodSugarComponent from "../../components/BloodSugarComponenet";
 import {getUserData} from "../../api/TempUser";
 
+import { StackNavigationProp } from '@react-navigation/stack';
+
 interface SummaryPage {
-    navigation: any;
+    navigation: StackNavigationProp<any, any>;
 }
 
 const SummaryPage: React.FC<SummaryPage> = ({navigation}) => {
@@ -16,17 +18,9 @@ const SummaryPage: React.FC<SummaryPage> = ({navigation}) => {
     return (
         <SafeAreaView style={styles.page_container}>
             <View style={styles.header_row}>
-                <Text style={styles.page_header}>{"Dashboard"}</Text>
+                <Text style={styles.page_header}>{"Patients"}</Text>
             </View>
-            {!userData?.patient  && ( <>
-            <Pressable onPress={navigation.navigate("HeartRate")}>
-                <HeartRateComponent/>
-            </Pressable>
-            <BloodPressureComponent/>
-            <BloodSugarComponent/>
-                </>
-                )}
-    </SafeAreaView>
+        </SafeAreaView>
     );
 }
 export default SummaryPage;

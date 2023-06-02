@@ -20,6 +20,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#A96123",
       icon: "heart",
       borderColor: "#FEED94",
+      url: "HeartPage"
     },
     {
       text: "Medicine",
@@ -27,6 +28,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#31b788",
       icon: "medkit",
       borderColor: "#FEED94",
+      url: "UnderConstruction"
     },
   ];
 
@@ -38,6 +40,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#EB4B62",
       icon: "fast-food",
       borderColor: "#FFFFFF",
+      url: "UnderConstruction"
     },
     {
       text: "Sleep",
@@ -45,6 +48,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#22538E",
       icon: "bed",
       borderColor: "#FFFFFF",
+      url: "UnderConstruction"
     },
     {
       text: "Exercise",
@@ -52,6 +56,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#E6DC6F",
       icon: "walk",
       borderColor: "#FFFFFF",
+      url: "UnderConstruction"
     },
   ];
 
@@ -62,6 +67,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#EB4B62",
       icon: "fast-food",
       borderColor: "#FFFFFF",
+      url: "UnderConstruction"
     },
     {
       text: "Family History",
@@ -69,6 +75,7 @@ const DataPage: React.FC<DataPage> = () => {
       iconColor: "#22538E",
       icon: "bed",
       borderColor: "#FFFFFF",
+      url: "UnderConstruction"
     },
   ];
 
