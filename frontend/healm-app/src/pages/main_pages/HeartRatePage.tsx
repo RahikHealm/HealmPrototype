@@ -4,11 +4,21 @@ import {styles} from "../../styles/heartPagesStyles";
 import {getUserData} from "../../api/TempUser";
 import {LineChart} from "react-native-chart-kit";
 import {FontAwesome, MaterialIcons} from '@expo/vector-icons';
+import SummaryPage from "./Summary_Page";
+import CalendarPage from "./Calender_Page";
+import DataPage from "./Data_Page";
+import SettingsPage from "./Settings_Page";
 interface HeartRatePage {
+    navigation: any;
 }
-const HeartRatePage: React.FC<HeartRatePage> = () =>   {
+const HeartRatePage: React.FC<HeartRatePage> = ({navigation}) =>   {
     return(
         <SafeAreaView style={styles.container}>
+            <View>
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                <Pressable style={{flexDirection: "row"}} onPressOut={() => navigation.pop()}>
+                    <MaterialIcons name="chevron-left" size={45} color="black" />
+                </Pressable>
             <View style={styles.container}>
                 <Text style={{fontSize: 35,
                     fontWeight: "bold",
@@ -16,15 +26,17 @@ const HeartRatePage: React.FC<HeartRatePage> = () =>   {
                     marginLeft: 5,
                     marginVertical: 10,
                 }}>Heart Rate</Text>
+            </View>
+            </View>
                 <View style={styles.headerLine}/>
                 <View style={{backgroundColor: "white", height: 300, borderRadius: 20}}>
-                    <View style={{flexDirection: "row", alignItems: 'center'}}>
+                    <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingRight: 20}}>
                         <View>
                             <Text style={styles.heartRateText}>Heart Rate</Text>
                             <Text style={styles.numberText}>{getUserData().patient.patient1.heartCategoryInfo.heartRate.value}<Text style={styles.bpmText}>{" " + getUserData().patient.patient1.heartCategoryInfo.heartRate.units}</Text></Text>
                             <Text style={styles.smallText}>Average Heart Rate for Today</Text>
                         </View>
-                        <Pressable style={styles.detailsButton}>
+                        <Pressable style={styles.detailsButton} onPressOut={() => navigation.navigate("UnderConstruction")}>
                             <Text style={{}}>Details</Text>
                             <MaterialIcons name="chevron-right" size={25} color="black" />
                         </Pressable>

@@ -4,15 +4,17 @@ import {styles} from "../../styles/heartPagesStyles";
 import {getUserData} from "../../api/TempUser";
 import {LineChart} from "react-native-chart-kit";
 import {FontAwesome, MaterialIcons} from '@expo/vector-icons';
+import SummaryPage from "./Summary_Page";
+import CalendarPage from "./Calender_Page";
+import DataPage from "./Data_Page";
 import SettingsPage from "./Settings_Page";
-import MainContainer from "./../MainContainer"
-interface BloodPressurePage {
+interface BloodSugarPage {
     navigation: any;
 }
-const BloodPressurePage : React.FC<BloodPressurePage> = ({navigation}) =>  {
-    return (
+const BloodSugarPage: React.FC<BloodSugarPage> = ({navigation}) =>   {
+    return(
         <SafeAreaView style={styles.container}>
-            <View style={styles.container}>
+            <View>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
                     <Pressable style={{flexDirection: "row"}} onPressOut={() => navigation.pop()}>
                         <MaterialIcons name="chevron-left" size={45} color="black" />
@@ -23,16 +25,16 @@ const BloodPressurePage : React.FC<BloodPressurePage> = ({navigation}) =>  {
                             alignSelf: "flex-start",
                             marginLeft: 5,
                             marginVertical: 10,
-                        }}>Blood Pressure</Text>
+                        }}>Blood Sugar</Text>
                     </View>
                 </View>
                 <View style={styles.headerLine}/>
                 <View style={{backgroundColor: "white", height: 300, borderRadius: 20}}>
                     <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingRight: 20}}>
                         <View>
-                            <Text style={styles.heartRateText}>Bloor Pressure</Text>
-                            <Text style={styles.numberText}>{getUserData().patient.patient1.heartCategoryInfo.bloodPressure.value}<Text style={styles.bpmText}>{" " + getUserData().patient.patient1.heartCategoryInfo.bloodPressure.units}</Text></Text>
-                            <Text style={styles.smallText}>Average Blood Pressure for Today</Text>
+                            <Text style={styles.heartRateText}>Blood Sugar</Text>
+                            <Text style={styles.numberText}>{getUserData().patient.patient1.heartCategoryInfo.bloodSugar.value}<Text style={styles.bpmText}>{" " + getUserData().patient.patient1.heartCategoryInfo.bloodSugar.units}</Text></Text>
+                            <Text style={styles.smallText}>Average Blood Sugar for Today</Text>
                         </View>
                         <Pressable style={styles.detailsButton} onPressOut={() => navigation.navigate("UnderConstruction")}>
                             <Text style={{}}>Details</Text>
@@ -40,7 +42,7 @@ const BloodPressurePage : React.FC<BloodPressurePage> = ({navigation}) =>  {
                         </Pressable>
                     </View>
                     <LineChart
-                        data={getUserData().patient.patient1.heartCategoryInfo.bloodPressure.history}
+                        data={getUserData().patient.patient1.heartCategoryInfo.bloodSugar.history}
                         width={Dimensions.get("screen").width*0.9}
                         height={175}
                         chartConfig={{
@@ -76,4 +78,4 @@ const BloodPressurePage : React.FC<BloodPressurePage> = ({navigation}) =>  {
     );
 }
 
-export default BloodPressurePage;
+export default BloodSugarPage;

@@ -9,7 +9,9 @@ import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
 import HeartRatePage from "./pages/main_pages/HeartRatePage";
 import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
+import BloodSugarPage from "./pages/main_pages/BloodSugarPage";
 import UnderConstruction from "./pages/underConstruction";
+import HeartPage from "./pages/main_pages/HeartPage";
 
 
 const Stack = createNativeStackNavigator();
@@ -21,17 +23,20 @@ const Navigator = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Onboarding_Page" // Temporary Change
+      initialRouteName="Onboarding_1" // Temporary Change
     >
-
+        <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
+        <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
+        <Stack.Screen name="Onboarding_3" component={Onboarding_Page_3}/>
         <Stack.Screen name="Onboarding_Page" component={Onboarding_Page} />
-
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
         <Stack.Screen name="MainContainer" component={MainContainer}/>
         <Stack.Screen name="HeartRate" component={HeartRatePage}/>
         <Stack.Screen name="BloodPressure" component={BloodPressurePage}/>
+        <Stack.Screen name="BloodSugar" component={BloodSugarPage}/>
         <Stack.Screen name="UnderConstruction" component={UnderConstruction}/>
+        <Stack.Screen name="HeartPage" component={HeartPage}/>
 
 
     </Stack.Navigator>
