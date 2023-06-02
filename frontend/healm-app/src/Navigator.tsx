@@ -7,12 +7,12 @@ import Onboarding_Page from "./pages/onboarding_pages/Onboarding_Page";
 import SignupPage from "./pages/signup_pages/Signup_Page";
 import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
-import HeartRatePage from "./pages/main_pages/HeartRatePage";
-import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
-import BloodSugarPage from "./pages/main_pages/BloodSugarPage";
+import HeartRatePage from "./pages/main_pages/HeartRate_Page";
+import BloodPressurePage from "./pages/main_pages/BloodPressure_Page";
+import BloodSugarPage from "./pages/main_pages/BloodSugar_Page";
 import UnderConstruction from "./pages/underConstruction";
-import HeartPage from "./pages/main_pages/HeartPage";
-import MedicationsPage from "./pages/main_pages/MedicationsPage";
+import HeartPage from "./pages/main_pages/Heart_Page";
+import MedicationsPage from "./pages/main_pages/Medications_Page";
 
 const Stack = createNativeStackNavigator();
 
