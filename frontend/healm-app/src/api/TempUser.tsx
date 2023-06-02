@@ -92,7 +92,7 @@ userData = {
 };
 
 let numUsers = 1;
-let currentUser = 1;
+let currentUser = 0;
 
 export function checkUsername_password(userName: string, password: string) {
   for (const user in userData) {

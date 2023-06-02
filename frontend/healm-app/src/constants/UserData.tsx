@@ -12,6 +12,8 @@ export interface UserData {
 }
 
 export interface PatientData {
+  patientId: number,
+  reminders: string[],
   heartCategoryInfo: {
     heartRate: VitalInfo;
     bloodPressure: VitalInfo;
