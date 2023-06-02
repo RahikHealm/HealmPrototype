@@ -1,11 +1,13 @@
 import {
-    Text,
-    View,
-    Image,
-    Pressable,
-    TextStyle,
-    ViewStyle,
-    ActivityIndicator, SafeAreaView,
+  Text,
+  View,
+  Image,
+  Pressable,
+  TextStyle,
+  ViewStyle,
+  ActivityIndicator,
+  SafeAreaView,
+  Dimensions,
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -36,20 +38,24 @@ const curDateString: string =
 interface CalendarPage {}
 
 const CalendarPage: React.FC<CalendarPage> = () => {
- 
- 
   // events should have a different type that's defined in UserData.tsx
-  const renderModal = (date: string, events: string[], isVisible: boolean, toggleModal: ()=> void) => {
-    return(
-      <BasicModal isVisible={isVisible} onClose={toggleModal} title={date} >
-          <View>
-            <Text style={styles.body_text}>
-              This modal will contain the events the patient has on {date.replace("Today, ", "")}
-            </Text>
-          </View>
+  const renderModal = (
+    date: string,
+    events: string[],
+    isVisible: boolean,
+    toggleModal: () => void
+  ) => {
+    return (
+      <BasicModal isVisible={isVisible} onClose={toggleModal} title={date}>
+        <View>
+          <Text style={styles.body_text}>
+            This modal will contain the events the patient has on{" "}
+            {date.replace("Today, ", "")}
+          </Text>
+        </View>
       </BasicModal>
-    )
-  }
+    );
+  };
 
   const renderCustomHeader = (date: any): JSX.Element => {
     const header = date.toString("MMMM yyyy"); // MMMM dd yyyy
@@ -79,17 +85,15 @@ const CalendarPage: React.FC<CalendarPage> = () => {
 
   // state can be 'selected', 'today', 'disabled'
   const renderCustomDay = (date: any, state: any): JSX.Element => {
-    
     const [isModalVisible, setIsModalVisible] = React.useState(false);
 
     const toggleModal = () => {
       setIsModalVisible(false);
-    }
-  
+    };
 
     let formattedDate: string = formatDate(date.dateString);
-    
-    if(state === "today"){
+
+    if (state === "today") {
       formattedDate = "Today, " + formattedDate;
     }
 
@@ -107,7 +111,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
       state === "disabled"
         ? {
             backgroundColor: "white",
-            borderColor: "#ADADAD"
+            borderColor: "#ADADAD",
           }
         : {};
     const selectedDay: ViewStyle =
@@ -124,7 +128,7 @@ const CalendarPage: React.FC<CalendarPage> = () => {
         : {};
 
     const dateStyle: ViewStyle = {
-      height: 50,
+      height: Dimensions.get("window").height * 0.067567,
       width: 40,
       borderWidth: 1,
       borderColor: "black", //#ADADAD",
@@ -136,11 +140,12 @@ const CalendarPage: React.FC<CalendarPage> = () => {
     };
 
     return (
-      <Pressable onPress={()=> setIsModalVisible(true)}>
-      <View style={dateStyle}>
-        <Text style={[textStyle]}>{date?.day}</Text>
-      </View>
-      {isModalVisible && renderModal(formattedDate, [""], isModalVisible, toggleModal)}
+      <Pressable onPress={() => setIsModalVisible(true)}>
+        <View style={dateStyle}>
+          <Text style={[textStyle]}>{date?.day}</Text>
+        </View>
+        {isModalVisible &&
+          renderModal(formattedDate, [""], isModalVisible, toggleModal)}
       </Pressable>
     );
   };
@@ -188,31 +193,40 @@ const calendarTheme = {
   calendarBackground: "rgba(0, 0, 0, 0.0)",
 };
 
-
 const formatDate = (date: string): string => {
   const months: string[] = [
-    'January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October', 'November', 'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
-  const [year, month, day] = date.split('-').map(Number);
+  const [year, month, day] = date.split("-").map(Number);
 
   // Determine the suffix for the day
   let suffix: string;
   if (day === 1 || day === 21 || day === 31) {
-    suffix = 'st';
+    suffix = "st";
   } else if (day === 2 || day === 22) {
-    suffix = 'nd';
+    suffix = "nd";
   } else if (day === 3 || day === 23) {
-    suffix = 'rd';
+    suffix = "rd";
   } else {
-    suffix = 'th';
+    suffix = "th";
   }
 
   // Format the date as "Month Date, Year"
   const formattedDate = `${months[month - 1]} ${day}${suffix}, ${year}`;
 
   return formattedDate;
-}
+};
 
 export default CalendarPage;
