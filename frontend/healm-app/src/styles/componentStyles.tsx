@@ -14,17 +14,19 @@ export const styles = StyleSheet.create({
         paddingRight: 0, // not doing anything for some reason
         paddingVertical: 10,
         marginVertical: 5,
+
     },medicationContainer: {
         alignSelf: "center",
         flexDirection: 'row',
         alignItems: 'center',
         width: '90%',
-        height: 125,
         backgroundColor: '#EBF8E6',
         borderWidth: 2,
         borderColor: '#fff',
         borderRadius: 20,
-        paddingHorizontal: 20,
+        paddingLeft: 20,
+        paddingRight: 0, // not doing anything for some reason
+        paddingVertical: 10,
         marginVertical: 5,
     },
     leftContainer: {
