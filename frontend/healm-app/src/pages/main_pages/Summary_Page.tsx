@@ -16,6 +16,8 @@ import { getUserData } from "../../api/TempUser";
 import BulletPoint from "../../components/bullet_point";
 import Dashboard from "../../components/dashboard_component";
 
+import { StackNavigationProp } from '@react-navigation/stack';
+
 interface SummaryPage {
   navigation: any;
 }

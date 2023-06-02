@@ -9,7 +9,9 @@ import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
 import HeartRatePage from "./pages/main_pages/HeartRatePage";
 import BloodPressurePage from "./pages/main_pages/BloodPressurePage";
+import BloodSugarPage from "./pages/main_pages/BloodSugarPage";
 import UnderConstruction from "./pages/underConstruction";
+import HeartPage from "./pages/main_pages/HeartPage";
 
 
 const Stack = createNativeStackNavigator();
@@ -31,7 +33,9 @@ const Navigator = () => {
         <Stack.Screen name="MainContainer" component={MainContainer}/>
         <Stack.Screen name="HeartRate" component={HeartRatePage}/>
         <Stack.Screen name="BloodPressure" component={BloodPressurePage}/>
+        <Stack.Screen name="BloodSugar" component={BloodSugarPage}/>
         <Stack.Screen name="UnderConstruction" component={UnderConstruction}/>
+        <Stack.Screen name="HeartPage" component={HeartPage}/>
 
 
     </Stack.Navigator>

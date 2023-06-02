@@ -1,7 +1,15 @@
 import React from "react";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { StyleSheet, TextInput, View, Text, ViewStyle } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Text,
+  ViewStyle,
+  Pressable,
+} from "react-native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 /**
  * This should only be a Category Components
@@ -27,6 +35,7 @@ interface CategoryChild {
   isTop?: boolean;
   isBottom?: boolean;
   isAlone?: boolean;
+  url: string; // Change 'pageName' to 'url'
 }
 
 const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
@@ -43,10 +52,10 @@ const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
   return (
     <View style={styles.group_container}>
       {childElements.map((child, index) => {
-        if (index == 0) {
+        if (index === 0) {
           return <CategoryChild key={index} isTop={true} {...child} />;
         }
-        if (index == childElements.length - 1) {
+        if (index === childElements.length - 1) {
           return <CategoryChild key={index} isBottom={true} {...child} />;
         }
 
@@ -65,6 +74,7 @@ const CategoryChild: React.FC<CategoryChild> = ({
   isTop,
   isBottom,
   isAlone,
+  url, // Change 'pageName' to 'url'
 }) => {
   let backgroundStyles: ViewStyle = {
     backgroundColor: bgColor,
@@ -74,10 +84,8 @@ const CategoryChild: React.FC<CategoryChild> = ({
     backgroundStyles = {
       backgroundColor: bgColor,
       borderColor: borderColor,
-
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
-
       borderTopWidth: 2,
     };
   }
@@ -85,13 +93,12 @@ const CategoryChild: React.FC<CategoryChild> = ({
     backgroundStyles = {
       backgroundColor: bgColor,
       borderColor: borderColor,
-
       borderBottomRightRadius: 25,
       borderBottomLeftRadius: 25,
-
       borderBottomWidth: 2,
     };
-  } if(isAlone){
+  }
+  if (isAlone) {
     backgroundStyles = {
       backgroundColor: bgColor,
       borderColor: borderColor,
@@ -100,32 +107,38 @@ const CategoryChild: React.FC<CategoryChild> = ({
     };
   }
 
+  const navigation = useNavigation<NavigationProp<any>>();
+
+  const handlePress = () => {
+    // Navigate to the specified URL
+    navigation.navigate(url);
+  };
+
   return (
-    <View style={[styles.child_container, backgroundStyles]}>
-      <View style={styles.lable_container}>
+    <Pressable onPressOut={handlePress}>
+      <View style={[styles.child_container, backgroundStyles]}>
+        <View style={styles.label_container}>
+          <MaterialCommunityIcons
+            name={icon}
+            color={iconColor}
+            size={35}
+            style={styles.icon}
+          />
+          <Text style={styles.label_text}>{text}</Text>
+        </View>
         <MaterialCommunityIcons
-          name={icon}
-          color={iconColor}
+          name="chevron-right"
+          color="#848484"
           size={35}
-          style={styles.icon}
+          style={styles.forward_icon}
         />
-        <Text style={styles.lable_text}> {text} </Text>
       </View>
-      <MaterialCommunityIcons
-        name="chevron-right"
-        color="#848484"
-        size={35}
-        style={styles.forward_icon}
-      />
-    </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   group_container: {
-    // borderWidth: 1,
-    // borderStyle: "dotted",
-    // borderColor: "red",
     flexDirection: "column",
     marginHorizontal: 20,
     borderRadius: 25,
@@ -140,11 +153,11 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingLeft: 10,
   },
-  lable_container: {
+  label_container: {
     flexDirection: "row",
     alignItems: "center",
   },
-  lable_text: {
+  label_text: {
     fontSize: 20,
     fontWeight: "600",
   },

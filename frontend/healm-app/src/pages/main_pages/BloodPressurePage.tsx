@@ -12,6 +12,7 @@ import { getUserData } from "../../api/TempUser";
 import { LineChart } from "react-native-chart-kit";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import SettingsPage from "./Settings_Page";
+import MainContainer from "./../MainContainer"
 interface BloodPressurePage {
     navigation: any,
 }
