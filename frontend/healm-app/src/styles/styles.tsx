@@ -183,7 +183,8 @@ export const styles = StyleSheet.create({
   },
   calendar_wrapper: {
     backgroundColor: "rgba(217, 217, 217, 0.21)",
-    height: 480,
+    //height: 480,
+    height: Dimensions.get("window").height * .6486,
     position: "absolute",
     bottom: 0,
   },
