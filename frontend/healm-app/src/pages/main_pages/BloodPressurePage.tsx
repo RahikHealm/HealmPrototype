@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import {
   Dimensions,
@@ -11,6 +12,7 @@ import { styles } from "../../styles/heartPagesStyles";
 import { getUserData } from "../../api/TempUser";
 import { LineChart } from "react-native-chart-kit";
 import { MaterialIcons } from "@expo/vector-icons";
+        
 interface BloodPressurePage {
   navigation: any;
 }

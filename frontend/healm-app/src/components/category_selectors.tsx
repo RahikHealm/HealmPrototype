@@ -22,7 +22,6 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
  *
  */
 
-
 interface CategoryGroup {
   children: CategoryChild | CategoryChild[];
 }
@@ -35,6 +34,7 @@ interface CategoryChild {
   text: string;
   isTop?: boolean;
   isBottom?: boolean;
+
   isAlone?: boolean;
   url: string; // Change 'pageName' to 'url'
 }
@@ -59,10 +59,9 @@ const CategoryGroup: React.FC<CategoryGroup> = ({ children }) => {
         if (index === childElements.length - 1) {
           return <CategoryChild key={index} isBottom={true} {...child} />;
         }
-
-        return <CategoryChild key={index} {...child} />;
-      })}
-    </View>
+          return <CategoryChild key={index} {...child} />;
+        })}
+      </View>
   );
 };
 

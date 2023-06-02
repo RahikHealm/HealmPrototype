@@ -24,9 +24,7 @@ const Navigator = () => {
       }}
       initialRouteName="Onboarding_Page" // Temporary Change
     >
-
         <Stack.Screen name="Onboarding_Page" component={Onboarding_Page} />
-
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
         <Stack.Screen name="MainContainer" component={MainContainer}/>

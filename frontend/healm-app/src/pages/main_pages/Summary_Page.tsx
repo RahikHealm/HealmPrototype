@@ -18,6 +18,8 @@ import Dashboard from "../../components/dashboard_component";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 
+import { StackNavigationProp } from '@react-navigation/stack';
+
 interface SummaryPage {
   navigation: StackNavigationProp<any, any>;
 }
