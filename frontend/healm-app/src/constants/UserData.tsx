@@ -7,6 +7,7 @@ export interface UserData {
     patient: {
       [patientId: string]: {
         patientId: number;
+        reminders: string[];
         heartCategoryInfo: {
           heartRate: VitalInfo;
           bloodPressure: VitalInfo;
@@ -15,6 +16,10 @@ export interface UserData {
       };
     };
   };
+}
+
+export interface Patient {
+  
 }
 
 export interface VitalInfo {
