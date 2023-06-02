@@ -87,6 +87,7 @@ const Onboarding_Page: React.FC<Onboarding_Page> = ({ navigation }) => {
       <FlatList
         horizontal
         pagingEnabled
+        showsHorizontalScrollIndicator={false}
         ref={flatListRef}
         data={headers}
         renderItem={({ item }) => <Page item={item} />}
@@ -119,7 +120,7 @@ const Onboarding_Page: React.FC<Onboarding_Page> = ({ navigation }) => {
               if (index < 2) {
                 handleScrollToIndex(index+1);
               } else {
-                navigation.navigate("Signup");
+                navigation.replace("Signup");
               }
             }}
           >

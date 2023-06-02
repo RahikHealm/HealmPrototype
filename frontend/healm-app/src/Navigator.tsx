@@ -3,9 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Page Imports
-import Onboarding_Page_1 from "./pages/onboarding_pages/Onboarding_Page_1";
-import Onboarding_Page_2 from "./pages/onboarding_pages/Onboarding_Page_2";
-import Onboarding_Page_3 from "./pages/onboarding_pages/Onboarding_Page_3";
+import Onboarding_Page from "./pages/onboarding_pages/Onboarding_Page";
 import SignupPage from "./pages/signup_pages/Signup_Page";
 import LoginPage from "./pages/login_pages/Login_Page";
 import MainContainer from "./pages/MainContainer";
@@ -31,6 +29,7 @@ const Navigator = () => {
         <Stack.Screen name="Onboarding_1" component={Onboarding_Page_1}/>
         <Stack.Screen name="Onboarding_2" component={Onboarding_Page_2}/>
         <Stack.Screen name="Onboarding_3" component={Onboarding_Page_3}/>
+        <Stack.Screen name="Onboarding_Page" component={Onboarding_Page} />
         <Stack.Screen name="Signup" component={SignupPage}/>
         <Stack.Screen name="Login" component={LoginPage}/>
         <Stack.Screen name="MainContainer" component={MainContainer}/>
