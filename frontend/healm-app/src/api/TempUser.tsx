@@ -11,6 +11,10 @@ userData = {
     patient: {
       patient1:{
         patientId: 1,
+        reminders: [
+          "Take Acetaminophen (2 pills)",
+          "Doctor's appointment in 3 days at 2:30 PM",
+        ],
         heartCategoryInfo: {
           heartRate: {
             lastRecordedDate: "Today",

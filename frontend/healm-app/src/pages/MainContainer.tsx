@@ -1,5 +1,5 @@
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Pages
@@ -38,16 +38,16 @@ const MainContainer: React.FC<MainContainer> = () => {
               iconName = focused ? "heart" : "heart-outline";
               break;
             case calendarName:
-              iconName = focused ? "calendar-outline" : "calendar-outline";
+              iconName = focused ? "calendar-search" : "calendar";
               break;
             case dataName:
-              iconName = focused ? "analytics" : "analytics-outline";
+              iconName = focused ? "chart-timeline-variant-shimmer" : "chart-timeline-variant";
               break;
             case settingsName:
-              iconName = focused ? "cog-outline" : "cog-outline";
+              iconName = focused ? "cog" : "cog-outline";
               break;
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "#F6AF71",
         headerShown: false,
