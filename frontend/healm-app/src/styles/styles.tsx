@@ -63,16 +63,17 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   icon_container: {
-    position: "absolute",
-    bottom: 100,
+
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 45,
   },
   Bottom_Text_Container: {
-    position: "absolute",
-    bottom: 50,
+    flex: 1,
+    paddingVertical: "auto",
+    alignContent: "center",
+    flexDirection: "row",
     justifyContent: "space-between",
   },
   text_input_box: {
@@ -102,7 +103,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     overflow: "hidden",
     maxWidth: 250,
-    width: 250,
+    width: "70%",
+    // borderWidth: 1,
   },
   text_input_icons: {
     alignSelf: "center",
