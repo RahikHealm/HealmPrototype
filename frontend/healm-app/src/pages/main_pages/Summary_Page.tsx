@@ -60,19 +60,15 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
             <HeartRateComponent
               onPress={() => navigation.navigate("HeartRate")}
             />
-
-            <BloodPressureComponent
-              onPress={() => navigation.navigate("BloodPressure")}
-            />
-
-            <BloodSugarComponent
-              onPress={() => navigation.navigate("BloodSugar")}
-            />
-
             <SleepPatternComponent
               onPress={() => navigation.navigate("UnderConstruction")}
             />
-
+            <BloodPressureComponent
+              onPress={() => navigation.navigate("BloodPressure")}
+            />
+            <BloodSugarComponent
+              onPress={() => navigation.navigate("BloodSugar")}
+            />
             <MedicationComponent
               id={3}
               onPress={() => navigation.navigate("UnderConstruction")}

@@ -41,7 +41,7 @@ const MedicationComponent: React.FC<medicationComponent> = ({
       units: "mg",
     };
   }
-  console.log(medicationInfo);
+  // console.log(medicationInfo);
   const {
     name,
     lastRecordedDate,

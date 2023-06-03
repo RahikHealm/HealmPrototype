@@ -16,7 +16,7 @@ const Dashboard: React.FC<Dashboard> = () => {
           marginRight: 10,
         }}
       >
-        <Text style={styles.reminder_text}>Patient1</Text>
+        <Text style={styles.reminder_text}>Grandma</Text>
         {getUserData().patient.patient1.reminders.map(
           (reminder: string, index: number) => {
             return (
