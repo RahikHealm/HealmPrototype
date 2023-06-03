@@ -18,7 +18,8 @@ import Dashboard from "../../components/dashboard_component";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 
-import MedicationComponent from '../../components/medication_component';
+import MedicationComponent from "../../components/medication_component";
+import SleepPatternComponent from "../../components/sleep_pattern_component";
 
 interface SummaryPage {
   navigation: StackNavigationProp<any, any>;
@@ -52,6 +53,10 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
 
         {userData?.patient && (
           <>
+            <MedicationComponent
+              id={2}
+              onPress={() => navigation.navigate("UnderConstruction")}
+            />
             <HeartRateComponent
               onPress={() => navigation.navigate("HeartRate")}
             />
@@ -59,8 +64,18 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
             <BloodPressureComponent
               onPress={() => navigation.navigate("BloodPressure")}
             />
+
             <BloodSugarComponent
               onPress={() => navigation.navigate("BloodSugar")}
+            />
+
+            <SleepPatternComponent
+              onPress={() => navigation.navigate("UnderConstruction")}
+            />
+
+            <MedicationComponent
+              id={3}
+              onPress={() => navigation.navigate("UnderConstruction")}
             />
           </>
         )}

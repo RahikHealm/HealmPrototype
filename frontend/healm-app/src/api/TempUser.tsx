@@ -51,7 +51,7 @@ userData = {
           },
           bloodSugar: {
             lastRecordedDate: "Today",
-            lastRecordedTime: "9:30 AM",
+            lastRecordedTime: "9:18 AM",
             trendSummery: "Lower than usual for this time of day",
             value: "120",
             units: "mg/dL",
