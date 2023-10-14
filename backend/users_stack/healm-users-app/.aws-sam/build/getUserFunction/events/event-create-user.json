@@ -1,0 +1,11 @@
+{
+  "httpMethod": "POST",
+  "body": {
+    "user_type" : "patient",
+      "email" : "testemail@email.com",
+      "username": "JohnSmith",
+      "password": "abc123",
+      "fullname": "John Smith",
+      "phone_number": "123-456-7890"
+  }
+}

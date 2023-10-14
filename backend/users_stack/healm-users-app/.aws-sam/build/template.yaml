@@ -1,0 +1,174 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: healm-users-app
+Transform:
+- AWS::Serverless-2016-10-31
+Resources:
+  createUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/create-user.createUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that creates a new user
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        CreateUser:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+      CodeUri: createUserFunction
+    Metadata:
+      SamResourceId: createUserFunction
+  updateUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/update-user.updateUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that updates a user's attributes
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        UpdateUser:
+          Type: Api
+          Properties:
+            Path: /{user_id}
+            Method: PUT
+      CodeUri: updateUserFunction
+    Metadata:
+      SamResourceId: updateUserFunction
+  deleteUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/delete-user.deleteUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that deletes a user
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        DeleteUser:
+          Type: Api
+          Properties:
+            Path: /{user_id}
+            Method: DELETE
+      CodeUri: deleteUserFunction
+    Metadata:
+      SamResourceId: deleteUserFunction
+  findUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/find-user.findUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that find a user using an attribute
+      Policies:
+      - DynamoDBReadPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        FindUser:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
+      CodeUri: findUserFunction
+    Metadata:
+      SamResourceId: findUserFunction
+  getUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get-user.getUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that gets a particular user using user_id
+      Policies:
+      - DynamoDBReadPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        GetUser:
+          Type: Api
+          Properties:
+            Path: /{user_id}
+            Method: GET
+      CodeUri: getUserFunction
+    Metadata:
+      SamResourceId: getUserFunction
+  UserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: UserTable
+      AttributeDefinitions:
+      - AttributeName: user_id
+        AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+      - AttributeName: user_id
+        KeyType: HASH
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName:
+        Ref: ApplicationResourceGroup
+      AutoConfigurationEnabled: 'true'
+Outputs:
+  UsersApi:
+    Description: API Gateway endpoint URL for Prod stage
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+Globals:
+  Function:
+    Tracing: Active
+  Api:
+    TracingEnabled: true

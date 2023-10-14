@@ -1,0 +1,8 @@
+{
+  "httpMethod": "PUT",
+  "body": {
+    "user_id" : "...",
+    "attribute_name" : "username",
+    "attribute_value" : "Updated Username!"
+  }
+}

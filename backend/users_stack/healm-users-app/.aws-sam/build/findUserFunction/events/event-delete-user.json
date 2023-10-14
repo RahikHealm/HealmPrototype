@@ -1,0 +1,7 @@
+{
+    "httpMethod": "DELETE",
+    "body": {
+      "user_id" : "..."
+    }
+  }
+  
