@@ -138,6 +138,33 @@ Resources:
       CodeUri: getUserFunction
     Metadata:
       SamResourceId: getUserFunction
+  verifyUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/verify-user.verifyUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that verifies a user's credentials
+      Policies:
+      - DynamoDBReadPolicy:
+          TableName:
+            Ref: UserTable
+      Environment:
+        Variables:
+          USER_TABLE:
+            Ref: UserTable
+      Events:
+        GetUser:
+          Type: Api
+          Properties:
+            Path: /
+            Method: HEAD
+      CodeUri: verifyUserFunction
+    Metadata:
+      SamResourceId: verifyUserFunction
   UserTable:
     Type: AWS::DynamoDB::Table
     Properties:

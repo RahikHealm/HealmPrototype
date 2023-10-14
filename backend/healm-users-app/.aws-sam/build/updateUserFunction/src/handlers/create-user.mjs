@@ -24,17 +24,17 @@ export const createUserHandler = async (event) => {
   // All log statements are written to CloudWatch
   console.info("received:", event);
 
-  // // Check if event has all the necessary params
-  // var result = checkParams(event.body);
-  // if (result) {
-  //   return result;
-  // }
+  // Check if event has all the necessary params
+  var result = checkParams(event.body);
+  if (result) {
+    return result;
+  }
 
-  // // Check if a user with that email already exists
-  // result = await doesUserExist(event.body.email);
-  // if (result) {
-  //   return result;
-  // }
+  // Check if a user with that email already exists
+  result = await doesUserExist(event.body.email);
+  if (result) {
+    return result;
+  }
 
 
   // Defining params for PutCommand

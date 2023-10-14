@@ -1,0 +1,8 @@
+{
+    "httpMethod": "HEAD",
+    "body": {
+      "email" : "testemail2@email.com",
+      "password" : "abc123"
+    }
+  }
+  

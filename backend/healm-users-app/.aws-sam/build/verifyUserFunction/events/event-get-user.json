@@ -1,0 +1,7 @@
+{
+    "httpMethod": "GET",
+    "body": {
+      "user_id" : "..."
+    }
+  }
+  

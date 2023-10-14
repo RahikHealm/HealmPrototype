@@ -102,7 +102,7 @@ Resources:
       Timeout: 100
       Description: A method that find a user using an attribute
       Policies:
-        # Give Create/Read/Update/Delete Permissions to the UserTable
+        # Give Read Permissions to the UserTable
         - DynamoDBReadPolicy:
             TableName: !Ref UserTable
       Environment:
@@ -128,7 +128,7 @@ Resources:
       Timeout: 100
       Description: A method that gets a particular user using user_id
       Policies:
-        # Give Create/Read/Update/Delete Permissions to the UserTable
+        # Give Read Permissions to the UserTable
         - DynamoDBReadPolicy:
             TableName: !Ref UserTable
       Environment:
@@ -141,6 +141,32 @@ Resources:
           Properties:
             Path: /{user_id}
             Method: GET
+
+  # Lambda function config verify-user.js
+  verifyUserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/verify-user.verifyUserHandler
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A method that verifies a user's credentials
+      Policies:
+        # Give Read Permissions to the UserTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref UserTable
+      Environment:
+        Variables:
+          # Make table name accessible as environment variable from function code during execution
+          USER_TABLE: !Ref UserTable
+      Events:
+        GetUser:
+          Type: Api
+          Properties:
+            Path: /
+            Method: HEAD
 
   # DynamoDB Table to store users
   UserTable:
