@@ -2,6 +2,9 @@ import { DynamoDBDocumentClient, PutCommand, ScanCommand } from "@aws-sdk/lib-dy
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import makeResponse from "../helpers/make-response.mjs";
 
+// Used for encrypting password
+import bcrypt from "bcryptjs";
+
 // Used for generating an id
 import { randomUUID } from "crypto";
 
@@ -21,34 +24,44 @@ export const createUserHandler = async (event) => {
   // All log statements are written to CloudWatch
   console.info("received:", event);
 
-  // Check if event has all the necessary params
-  var result = checkParams(event.body);
-  if (result) {
-    return result;
-  }
+  // // Check if event has all the necessary params
+  // var result = checkParams(event.body);
+  // if (result) {
+  //   return result;
+  // }
 
-  // Check if a user with that email already exists
-  result = await doesUserExist(event.body.email);
-  if (result) {
-    return result;
-  }
+  // // Check if a user with that email already exists
+  // result = await doesUserExist(event.body.email);
+  // if (result) {
+  //   return result;
+  // }
+
 
   // Defining params for PutCommand
   // Should not modify any exisitng user because user_id will always be completely new
   const user = {
     TableName: tableName,
     Item: {
+      // user_id: generated below with uuid
       user_type: event.body.user_type,
       email: event.body.email,
       username: event.body.username,
-      password: event.body.password,
+      // password: will be added on below with encryption
       fullname: event.body.fullname,
       phone_number: event.body.phone_number,
+      // date_created: added below
     },
   };
 
   // Creates a unique id
   user.Item.user_id = randomUUID();
+
+  // Creates encrypted password
+  const saltRounds = 10;
+  user.Item.password = bcrypt.hashSync(event.body.password, saltRounds);
+
+  console.log("password: ")
+  console.log(user.Item.password);
 
   // Adds the date and time of creation
   const dateObj = new Date();

@@ -5,7 +5,7 @@ codeuri = "/Users/rahiksikder/Projects/GitHub/HealmPrototype/backend/healm-users
 runtime = "nodejs18.x"
 architecture = "x86_64"
 handler = "src/handlers/create-user.createUserHandler"
-manifest_hash = "00c34d89a90cfcda7f516d5ff206dda5"
+manifest_hash = "06423e2c3bb67fcad2b98519903a74cd"
 packagetype = "Zip"
 functions = ["createUserFunction", "updateUserFunction", "deleteUserFunction", "findUserFunction", "getUserFunction"]
 
