@@ -30,7 +30,7 @@ const SleepPatternComponent: React.FC<SummaryComponenet> = ({ onPress }) => {
           </View>
           <Text style={styles.timeText}>Today 7:28 AM</Text>
           <Text style={styles.numberText}>2</Text>
-          <Text style={styles.bpmText}>disturbances</Text>
+          <Text style={styles.bpmText}>{" "}disturbances</Text>
         </View>
         <View style={styles.middleContainer}>
           <Text style={styles.trendText}>Trend Summary</Text>

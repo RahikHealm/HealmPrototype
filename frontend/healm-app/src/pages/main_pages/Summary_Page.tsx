@@ -54,8 +54,8 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
         {userData?.patient && (
           <>
             <MedicationComponent
-              id={2}
-              onPress={() => navigation.navigate("UnderConstruction")}
+              id={1}
+              onPress={() => navigation.navigate("MedMetformin")}
             />
             <HeartRateComponent
               onPress={() => navigation.navigate("HeartRate")}
@@ -70,7 +70,7 @@ const SummaryPage: React.FC<SummaryPage> = ({ navigation }) => {
               onPress={() => navigation.navigate("BloodSugar")}
             />
             <MedicationComponent
-              id={3}
+              id={2}
               onPress={() => navigation.navigate("UnderConstruction")}
             />
           </>

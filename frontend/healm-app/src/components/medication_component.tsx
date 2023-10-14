@@ -16,12 +16,12 @@ const MedicationComponent: React.FC<medicationComponent> = ({
   let medicationInfo: any;
   if (id === 1) {
     medicationInfo = {
-      name: "Ativan",
+      name: "Metformin",
       lastRecordedDate: "Today",
       lastRecordedTime: "10:00 AM",
-      trendSummery: "Sample medication trend summary",
-      value: "50",
-      units: "mg",
+      trendSummery: "No missed dosages",
+      value: "2",
+      units: "dosages",
     };
   } else if (id === 2) {
     medicationInfo = {
